@@ -1,2 +1,2 @@
 
-const exampleToggledSelector = state => state.exampleReducer.example;
+export const exampleToggledSelector = () => state.example.example;
