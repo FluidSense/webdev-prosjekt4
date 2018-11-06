@@ -23,9 +23,49 @@ class App extends Component {
           {/*Search bar*/}
         <Searchbutton />
 
+          {/*Searches are fetched from the database which records the users activity. The objects will only be loaded progressively as the user scrolls.*/}
+          <div class="saved_history">
+            <ul class="history_list">
+              <li>test</li>
+              <li>test2</li>
+              <li>test2</li>
+              <li>test</li>
+              <li>test2</li>
+              <li>test</li>
+              <li>test2</li>
+              <li>test2</li>
+              <li>test</li>
+              <li>test2</li>
+              <li>test</li>
+              <li>test2</li>
+            </ul>
+          </div>
+
           {/*Result set*/}
           <div class="result_wrapper">
             <h1>Results</h1>
+
+            <div class="sort_filters"> {/*These are options that the user can make in order to sort and filter the results. The idea is to make it so that changing the value will automatically perform a new request for the result set.*/}
+              <form>
+                  {/*For sorting the returned objects based on user choice*/}
+                  <select class="sorting">
+                    <option value="lexicographical">Alphabetically</option>
+                    <option value="by_added_date">By added date</option>
+                    <option value="by_added_date_rev">By added date reversed</option>
+                  </select>
+              </form>
+
+              <form>
+                  {/*For filtering types of return objects*/}
+                  <label><input defaultChecked="true" type="checkbox" class="filter_box" name="films" value="films" />Show films</label>
+                  <label><input defaultChecked="true" type="checkbox" class="filter_box" name="people" value="people" />Show people</label>
+                  <label><input defaultChecked="true" type="checkbox" class="filter_box" name="species" value="species" />Show species</label>
+                  <label><input defaultChecked="true" type="checkbox" class="filter_box" name="starships" value="starships" />Show starships</label>
+                  <label><input defaultChecked="true" type="checkbox" class="filter_box" name="vehicles" value="vehicles" />Show vehicles</label>
+                  <label><input defaultChecked="true" type="checkbox" class="filter_box" name="planet" value="planet" />Show planet</label>
+              </form>
+            </div>
+
             <div class="result_set">
               <ul class="result_list"> {/*The objects below should be expandable link/button components that show the other properties of the returned JSON*/}
                 <li>Object 1</li>

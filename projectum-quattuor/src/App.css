@@ -13,7 +13,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(7px + 2vmin);
-  color: white;
+  color: rgb(231, 231, 231);
 }
 
 h1{
@@ -30,11 +30,31 @@ h1{
   width: 35vw;
   padding: 0 2vw 0 2vw;
   background-color: rgb(209, 209, 209);
-  color: white;
+  color: rgb(231, 231, 231);
   font-size: calc(7px + 2vmin);
-  border: 2px;
+  border: 1px;
   border-color: #3e3e3e;
   border-radius: 10px;
+}
+
+.saved_history{
+  max-height: 20vh;
+  width: 35vw;
+  display: inline-block;
+  text-align: left;
+  margin-top: 3px;
+  padding: 0 2vw 0 2vw;
+  background-color: rgb(209, 209, 209);
+  color: #3e3e3e;
+  font-size: calc(9px + 2vmin);
+  border: 1px;
+  border-color: #3e3e3e;
+  border-radius: 10px;
+  overflow-y: auto;
+}
+
+.sort_filters{
+
 }
 
 .result_set{
@@ -43,17 +63,16 @@ h1{
   width: 35vw;
   display: inline-block;
   text-align: left;
-  margin-top: 3px;
   padding: 0 2vw 0 2vw;
   background-color: rgb(50, 78, 38);
-  color: white;
+  color: rgb(231, 231, 231);
   font-size: calc(9px + 2vmin);
-  border: 2px;
+  border: 1px;
   border-color: #3e3e3e;
   border-radius: 10px;
 }
 
-.result_list {
+.result_list, .history_list {
   padding: 0;
   list-style-type: none;
 }
