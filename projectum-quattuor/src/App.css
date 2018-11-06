@@ -32,9 +32,13 @@ h1{
   background-color: rgb(209, 209, 209);
   color: white;
   font-size: calc(7px + 2vmin);
-  border: 2px;
+  border: 1px;
   border-color: #3e3e3e;
   border-radius: 10px;
+}
+
+.sort_filters{
+
 }
 
 .result_set{
@@ -48,7 +52,7 @@ h1{
   background-color: rgb(50, 78, 38);
   color: white;
   font-size: calc(9px + 2vmin);
-  border: 2px;
+  border: 1px;
   border-color: #3e3e3e;
   border-radius: 10px;
 }
