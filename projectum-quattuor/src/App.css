@@ -5,7 +5,6 @@
   align-content: center;
 }
 
-
 .App-header {
   background-color: #2d530d;
   min-height: 5vh;
@@ -17,6 +16,11 @@
   color: white;
 }
 
+h1{
+  color: #3e3e3e;
+  font-size: calc(8px + 4vmin);
+}
+
 .content{
 
 }
@@ -24,12 +28,32 @@
 .search_bar{
   height: 8vh;
   width: 35vw;
-  margin-top: 10vh;
   padding: 0 2vw 0 2vw;
-  background-color: rgb(50, 78, 38);
+  background-color: rgb(209, 209, 209);
   color: white;
   font-size: calc(7px + 2vmin);
   border: 2px;
   border-color: #3e3e3e;
   border-radius: 10px;
+}
+
+.result_set{
+  min-height: 15vh;
+  max-height: 45vh;
+  width: 35vw;
+  display: inline-block;
+  text-align: left;
+  margin-top: 3px;
+  padding: 0 2vw 0 2vw;
+  background-color: rgb(50, 78, 38);
+  color: white;
+  font-size: calc(9px + 2vmin);
+  border: 2px;
+  border-color: #3e3e3e;
+  border-radius: 10px;
+}
+
+.result_list {
+  padding: 0;
+  list-style-type: none;
 }
