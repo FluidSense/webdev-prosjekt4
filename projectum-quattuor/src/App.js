@@ -7,17 +7,23 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <p>
-            Edit <code>src/App.js</code> and save to reload.
+            Prosjekt 4
           </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
         </header>
+
+        {/*All divs below should be comprised of their own components*/}
+
+        <div class="content">
+
+          {/*Search bar*/}
+          <form>
+            <label>
+              <input type="text" class="search_bar" />
+            </label>
+          </form>
+
+        
+        </div>
       </div>
     );
   }
