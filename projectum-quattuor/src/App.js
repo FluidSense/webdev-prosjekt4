@@ -26,6 +26,24 @@ class App extends Component {
             </form>
           </div>
 
+          {/*Searches are fetched from the database which records the users activity. The objects will only be loaded progressively as the user scrolls.*/}
+          <div class="saved_history">
+            <ul class="history_list">
+              <li>test</li>
+              <li>test2</li>
+              <li>test2</li>
+              <li>test</li>
+              <li>test2</li>
+              <li>test</li>
+              <li>test2</li>
+              <li>test2</li>
+              <li>test</li>
+              <li>test2</li>
+              <li>test</li>
+              <li>test2</li>
+            </ul>
+          </div>
+
           {/*Result set*/}
           <div class="result_wrapper">
             <h1>Results</h1>
