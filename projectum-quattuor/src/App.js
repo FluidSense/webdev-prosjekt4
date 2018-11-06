@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
+import Searchbutton from '../src/components/Searchbutton';
+
 
 class App extends Component {
+
+
+
   render() {
+    
     return (
       <div className="App">
         <header className="App-header">
@@ -14,17 +20,8 @@ class App extends Component {
         {/*All divs below should be comprised of their own components*/}
 
         <div class="content">
-
-
           {/*Search bar*/}
-          <div class="search_wrapper">
-            <h1>Search</h1>
-            <form>
-              <label>
-                <input type="text" class="search_bar" />
-              </label>
-            </form>
-          </div>
+        <Searchbutton />
 
           {/*Result set*/}
           <div class="result_wrapper">
