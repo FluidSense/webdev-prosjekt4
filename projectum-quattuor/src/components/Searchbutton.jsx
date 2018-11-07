@@ -18,12 +18,13 @@ class Searchbutton extends Component {
     }
     /* Prevents default formsubmit for now, and logs the state that is saved.*/
     handleSubmit(event) {
-        console.log('Be with you, and this was written:' + this.state.value);
+        console.log('The force is with you. You wrote:' + this.state.value);
         event.preventDefault();
         this.handleFetch();
     }
 
     /* Method for fecthing from the API. */
+
     handleFetch() {
         fetch(APIQuery + this.state.value)
         .then(response => response.json())
@@ -34,21 +35,21 @@ class Searchbutton extends Component {
         return JSON.stringify(this.state.data);
     }
 
-
     render() {
         return (
         <div className="search_wrapper"> 
             <form onSubmit={this.handleSubmit}>
             <label>
-                Search:
                 <input type="text" className="search_bar" value={this.state.value} onChange={this.handleChange} />
             </label>
-            <input type="submit" className="" value="May the Force" />
+            <div>
+            <input type="submit" className="search_button" value="May the Force be with you." />
+            </div>
             </form>  
-            {this.handleJson()}
+                 {this.handleJson()}
         </div>
         );
     }
-    }
+}
             
 export default Searchbutton;

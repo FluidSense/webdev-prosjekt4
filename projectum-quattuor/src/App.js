@@ -18,7 +18,6 @@ class App extends Component {
         </header>
 
         {/*All divs below should be comprised of their own components*/}
-
         <div class="content">
           {/*Search bar*/}
         <Searchbutton />
