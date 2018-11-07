@@ -96,7 +96,6 @@ input[type="submit"]{
   display: flex;
   font-size: 16px;
   justify-content: space-around;
-  flex-wrap: wrap;
   width: 38vw;
   margin: 0 auto;
   height:14vh;
@@ -115,9 +114,13 @@ input[type="checkbox"] {
   padding:40px;
   color: white;
     background-color: darkgreen;
+    -webkit-transition: background-color 0.5s ease-out;
+    -moz-transition: background-color 0.5s ease-out;
+    -o-transition: background-color 0.5s ease-out;
+    transition: background-color 0.5s ease-out;
 }
 .checkbox label:hover {
-  transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease-in-out;
   background-color: green;
   cursor: pointer;
 }
