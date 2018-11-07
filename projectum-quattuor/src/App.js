@@ -8,7 +8,6 @@ class App extends Component {
   render() {
     return (
       <>
-        <ExampleContainer />
         <div className="App">
           <header className="App-header">
             <p>
@@ -19,6 +18,8 @@ class App extends Component {
           {/*All divs below should be comprised of their own components*/}
 
           <div className="content">
+
+            <ExampleContainer />
 
             {/*Search bar*/}
             <div className="search_wrapper">
@@ -72,7 +73,7 @@ class App extends Component {
                     <label><input defaultChecked="true" type="checkbox" className="filter_box" name="planet" value="planet" />Show planet</label>
                 </form>
               </div>
-              
+
               <div className="result_set">
                 <p>Click the results to see more information</p>
 
