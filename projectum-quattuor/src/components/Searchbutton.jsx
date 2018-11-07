@@ -1,19 +1,25 @@
 import React,{Component}  from 'react'
+import Checkbox from './Checkbox';
 
 const APIQuery = 'https://swapi.co/api/';
 
 class Searchbutton extends Component {
     constructor(props) {
         super(props);
-        this.state = {value: '', data: []};
+        this.state = {
+            value: '',
+            data: [],
+            isChecked: false};
     
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleCheck = this.handleCheck.bind(this);
     }
     
     /*Funcionality to handle form and state of form*/
     /* Changes state of value whenever the form is changed, in realtime. */
     handleChange(event) {
+        console.log("sad");
         this.setState({value: event.target.value});
     }
     /* Prevents default formsubmit for now, and logs the state that is saved.*/
@@ -31,14 +37,27 @@ class Searchbutton extends Component {
         .then(data => this.setState({ data }));
     }
 
-    handleJson(json){
+    /* Stringifies JSON. */
+    handleJson(){
         return JSON.stringify(this.state.data);
     }
 
+
+    /* Handles state of checkboxes and sets state as to prepend necessary filter for request */
+    handleCheck(event) {
+        this.setState({isChecked: event.target.isChecked});
+        this.setState({value: event.target.value})
+        if(this.state.value != ''){
+            this.setState({value: ''})
+        }
+    }
+
+
     render() {
         return (
+        <React.Fragment>
         <div className="search_wrapper"> 
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleSubmit} method="#">
             <label>
                 <input type="text" className="search_bar" value={this.state.value} onChange={this.handleChange} />
             </label>
@@ -48,6 +67,36 @@ class Searchbutton extends Component {
             </form>  
                  {this.handleJson()}
         </div>
+        <div class="result_wrapper">
+        <h1>Results</h1>
+        {/*Section for checkboxes. Should be own componenet. */}
+         <div className="checkbox">
+            <label>Planet
+                <input
+                    className="checkboxes"
+                    id="planetBox"
+                    type="checkbox"
+                    checked={this.state.isChecked} 
+                    onChange={this.handleCheck}
+                    name="name"
+                    label="lol"
+                    value="planet/?search="
+                    />
+            </label>
+        </div>
+        </div>
+
+        <div class="result_set">
+        <ul class="result_list"> {/*The objects below should be expandable link/button components that show the other properties of the returned JSON*/}
+            <li>Object 1</li>
+            <li>Object 2</li>
+            <li>Object 3</li>
+            <li>Object 4</li>
+            <li>Object 5</li>
+            <li>Object 6</li>
+        </ul>
+        </div>
+    </React.Fragment>
         );
     }
 }
