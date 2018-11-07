@@ -1,2 +1,3 @@
 
-export const exampleToggledSelector = () => state.example.example;
+
+export const exampleToggledSelector = (state) => state.example.test;

@@ -15,17 +15,18 @@ class _ExampleContainer extends React.Component {
 
 
     render(){
-        console.log('state in exampleContainer:',this.state);
         return false;
     }
 }
 
-const mapStateToProps = (/* Pass state in here if needed, but beware that it might cause extra renderings */) => {
+/* Gets desired props from the state store */
+const mapStateToProps = (state) => {
     return {
-        example: exampleToggledSelector(),
+        example: exampleToggledSelector(state),
     }
 };
 
+/* Callable actions as props */
 const mapDispatchToProps = dispatch => {
     return {
         doSomething: () => dispatch(exampleAction()),
@@ -33,6 +34,7 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
+/* Connects the container to the store */
 const ExampleContainer = connect(
     mapStateToProps,
     mapDispatchToProps
