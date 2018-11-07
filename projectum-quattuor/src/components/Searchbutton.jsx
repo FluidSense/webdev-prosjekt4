@@ -47,7 +47,7 @@ class Searchbutton extends Component {
     handleCheck(event) {
         this.setState({isChecked: event.target.isChecked});
         this.setState({value: event.target.value})
-        if(this.state.value != ''){
+        if(this.state.value == event.target.value){
             this.setState({value: ''})
         }
     }
