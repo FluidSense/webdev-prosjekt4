@@ -5,7 +5,7 @@ const APIQuery = 'https://swapi.co/api/';
 class Searchbutton extends Component {
     constructor(props) {
         super(props);
-        this.state = {value: 'planets/1', data: null};
+        this.state = {value: 'planets/1', data: []};
     
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -21,12 +21,16 @@ class Searchbutton extends Component {
         event.preventDefault();
     }
 
+    handleJson(json){
+        return JSON.stringify(this.state.data);
+    }
     /*Lifecycle method that fetches from API*/
     componentDidMount() {
             fetch(APIQuery + this.state.value)
             .then(response => response.json())
             .then(data => this.setState({ data }));
         }
+
 
     render() {
         return (
@@ -37,7 +41,9 @@ class Searchbutton extends Component {
                 <input type="text" className="search_bar" value={this.state.value} onChange={this.handleChange} />
             </label>
             <input type="submit" value="May the Force" />
-            </form>
+            </form>  
+            {this.handleJson()}
+            json goes here
         </div>
         );
     }
