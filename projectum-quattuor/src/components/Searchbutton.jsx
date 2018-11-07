@@ -70,20 +70,42 @@ class Searchbutton extends Component {
         <div class="result_wrapper">
         <h1>Results</h1>
         {/*Section for checkboxes. Should be own componenet. */}
+         <div className="checkboxes">
          <div className="checkbox">
-            <label>Planet
+            <label for="planetBox">Planet
                 <input
-                    className="checkboxes"
+                    className="checkboxesz"
                     id="planetBox"
                     type="checkbox"
                     checked={this.state.isChecked} 
                     onChange={this.handleCheck}
-                    name="name"
-                    label="lol"
                     value="planet/?search="
                     />
             </label>
         </div>
+        <div className="checkbox">
+            <label>Starships
+                <input
+                    className="checkboxesz"
+                    type="checkbox"
+                    checked={this.state.isChecked} 
+                    onChange={this.handleCheck}
+                    value="starships/?search="
+                    />
+            </label>
+        </div>
+        <div className="checkbox">
+            <label>People
+                <input
+                    className="checkboxesz"
+                    type="checkbox"
+                    checked={this.state.isChecked} 
+                    onChange={this.handleCheck}
+                    value="people/?search="
+                    />
+            </label>
+        </div>
+                    </div>
         </div>
 
         <div class="result_set">
