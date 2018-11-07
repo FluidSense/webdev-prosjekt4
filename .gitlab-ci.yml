@@ -21,6 +21,7 @@ stages:
   - build
   - fresh_build
   - test
+  - test-e2e
 
 before_script:
   - cd projectum-quattuor
@@ -45,7 +46,7 @@ unittest-job:
   when: always
 
 integrationtest-job:
-  stage: test
+  stage: test-e2e
   script:
   # start the server in the background
     - npm start --silent &
