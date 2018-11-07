@@ -20,7 +20,7 @@ export default class ResultObject extends React.Component{
             .then(data => this.setState({ information: data.results[0] })) // This would be Luke Skywalker
     }
 
-
+    /*Handles toggling of expansion*/
     handleClick = () => {
         this.state.expanded ? this.setState({ expanded: false }) : this.setState({ expanded: true });
     }
@@ -28,8 +28,8 @@ export default class ResultObject extends React.Component{
 
     render(){
         const { information } = this.state;
-        console.log(typeof(information));
 
+        {/*Toggles expansion on/off*/}
         if(!this.state.expanded){
             return <p onClick={this.handleClick}>{information.name}</p>
         }
