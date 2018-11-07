@@ -1,0 +1,62 @@
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+  - projectum-quattuor/.npm/
+  - projectum-quattuor/cache/Cypress
+  - projectum-quattuor/node_modules/
+  - projectum-quattuor/package-lock.json
+
+image: cypress/base:10
+
+variables:
+  npm_config_cache: "$CI_PROJECT_DIR/projectum-quattuor/.npm"
+  CYPRESS_CACHE_FOLDER: "$CI_PROJECT_DIR/projectum-quattuor/cache/Cypress"
+
+# cache using branch name
+# https://gitlab.com/help/ci/caching/index.md
+
+
+
+stages:
+  - build
+  - fresh_build
+  - test
+  - test-e2e
+
+before_script:
+  - cd projectum-quattuor
+
+build-job:
+  stage: build
+  script:
+    - npm ci
+    - npm run e2e:verify
+
+build-job-from-bottom-if-no-cache:
+  stage: fresh_build
+  script:
+    - npm install
+    - npm run e2e:verify
+  when: on_failure
+
+unittest-job:
+  stage: test
+  script:
+    - npm test
+  when: always
+
+integrationtest-job:
+  stage: test-e2e
+  script:
+  # start the server in the background
+    - npm start --silent &
+  # run Cypress test in load balancing mode, pass id to tie jobs together
+    - npm run e2e --record
+  when: always
+  artifacts:
+    expire_in: 1 week
+    when: always
+    paths:
+    - projectum-quattuor/cypress/screenshots
+    - projectum-quattuor/cypress/videos
+
