@@ -29,7 +29,7 @@ export default class ResultObject extends React.Component{
     render(){
         const { information } = this.state;
 
-        {/*Toggles expansion on/off*/}
+        /*Toggles expansion on/off*/
         if(!this.state.expanded){
             return <p onClick={this.handleClick}>{information.name}</p>
         }
@@ -37,10 +37,10 @@ export default class ResultObject extends React.Component{
         return(
             <div key={information.url}>
                 <p key="0" onClick={this.handleClick}>{information.name}</p>
-                <ul key="1" className="result_list">
+                <ul key="1" className="result_list_expanded">
                     {Object.keys(information).map(attribute =>
-                        <li key={attribute.objectID}>
-                            <p>{attribute}: {attribute}</p>
+                        <li key={attribute}>
+                            <p>{attribute}: {information[attribute]}</p>
                         </li>
                     )}
                 </ul>

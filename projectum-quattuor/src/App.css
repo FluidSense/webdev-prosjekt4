@@ -61,6 +61,7 @@ h1{
 .result_set{
   min-height: 15vh;
   max-height: 45vh;
+  margin-bottom: 3em;
   width: 35vw;
   display: inline-block;
   text-align: left;
@@ -77,4 +78,10 @@ h1{
 .result_list, .history_list {
   padding: 0;
   list-style-type: none;
+}
+
+.result_list_expanded{
+  font-size: calc(7px + 1vmin);
+  margin: 0.3em 0 0 0;
+  list-style-type: inherit;
 }

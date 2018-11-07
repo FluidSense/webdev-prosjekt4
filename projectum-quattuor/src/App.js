@@ -71,6 +71,8 @@ class App extends Component {
             </div>
 
             <div className="result_set">
+              <p>Click the results to see more information</p>
+
               <ul className="result_list"> {/*The objects below should be expandable link/button components that show the other properties of the returned JSON*/}
                 <li><ResultObject/></li> {/*Make sure to include key=information.url in order to give the object a unique ID*/}
                 <li>Object 2</li>
