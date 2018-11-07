@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import ResultObject from './components/ResultObject';
 
 class App extends Component {
   render() {
@@ -71,7 +72,7 @@ class App extends Component {
 
             <div className="result_set">
               <ul className="result_list"> {/*The objects below should be expandable link/button components that show the other properties of the returned JSON*/}
-                <li>Object 1</li>
+                <li><ResultObject/></li> {/*Make sure to include key=information.url in order to give the object a unique ID*/}
                 <li>Object 2</li>
                 <li>Object 3</li>
                 <li>Object 4</li>
