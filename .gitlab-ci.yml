@@ -22,6 +22,8 @@ stages:
   - fresh_build
   - test
 
+before_script:
+  - cd projectum-quattuor
 
 build-job:
   stage: build
@@ -33,7 +35,6 @@ build-job:
 build-job-from-bottom-if-no-cache:
   stage: fresh_build
   script:
-    - cd projectum-quattuor
     - npm install
     - npm run e2e:verify
   when: on_failure
@@ -41,14 +42,12 @@ build-job-from-bottom-if-no-cache:
 unittest-job:
   stage: test
   script:
-    - cd projectum-quattuor
     - npm test
   when: always
 
 integrationtest-job:
   stage: test
   script:
-    - cd projectum-quattuor
   # start the server in the background
     - npm start --silent &
   # run Cypress test in load balancing mode, pass id to tie jobs together
