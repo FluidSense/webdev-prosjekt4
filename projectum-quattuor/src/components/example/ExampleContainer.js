@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { exampleAction, exampleActionWithPayload } from '../../state/example/actions';
-import { exampleToggledSelector } from '../../state/example/selectors';
+import { exampleToggledSelector, examplePayloadSelector } from '../../state/example/selectors';
+import { ExamplePresentation } from './ExamplePresentation';
 
 
 class _ExampleContainer extends React.Component {
@@ -15,7 +16,10 @@ class _ExampleContainer extends React.Component {
 
 
     render(){
-        return false;
+        return <ExamplePresentation 
+                    toggler={this.props.example}
+                    text={this.props.txt}
+                />;
     }
 }
 
@@ -23,6 +27,7 @@ class _ExampleContainer extends React.Component {
 const mapStateToProps = (state) => {
     return {
         example: exampleToggledSelector(state),
+        txt: examplePayloadSelector(state),
     }
 };
 
