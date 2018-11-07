@@ -28,7 +28,6 @@ before_script:
 build-job:
   stage: build
   script:
-    - cd projectum-quattuor
     - npm ci
     - npm run e2e:verify
 
