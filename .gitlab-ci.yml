@@ -1,16 +1,16 @@
 cache:
   key: ${CI_COMMIT_REF_SLUG}
   paths:
-    - .npm/
-    - cache/Cypress
-    - node_modules/
-    - package-lock.json
+    - projectum-quattuor/.npm/
+    - projectum-quattuor/cache/Cypress
+    - projectum-quattuor/node_modules/
+    - projectum-quattuor/package-lock.json
 
 image: cypress/base:10
 
 variables:
-  npm_config_cache: "$CI_PROJECT_DIR/.npm"
-  CYPRESS_CACHE_FOLDER: "$CI_PROJECT_DIR/cache/Cypress"
+  npm_config_cache: "$CI_PROJECT_DIR/projectum-quattuor/.npm"
+  CYPRESS_CACHE_FOLDER: "$CI_PROJECT_DIR/projectum-quattuor/cache/Cypress"
 
 # cache using branch name
 # https://gitlab.com/help/ci/caching/index.md
@@ -27,6 +27,7 @@ build-job:
   stage:
     build
   script:
+    - cd projectum-quattuor
     - npm ci
     - npm run e2e:verify 
 
@@ -34,6 +35,7 @@ build-job-from-bottom-if-no-cache:
   stage:
     fresh_build
   script:
+    - cd projectum-quattuor
     - npm install
     - npm run e2e:verify
   when:
@@ -45,13 +47,15 @@ unittest-job:
   stage:
     test
   script:
-    npm test
+   - cd projectum-quattuor
+   - npm test
     
 
 integrationtest-job:
   stage:
     test
-  script: 
+  script:
+    - cd projectum-quattuor 
     # start the server in the background
     - npm start --silent &
     # run Cypress test in load balancing mode, pass id to tie jobs together
@@ -60,6 +64,6 @@ integrationtest-job:
     expire_in: 1 week
     when: always
     paths:
-    - cypress/screenshots
-    - cypress/videos
+    - projectum-quattuor/cypress/screenshots
+    - projectum-quattuor/cypress/videos
  
