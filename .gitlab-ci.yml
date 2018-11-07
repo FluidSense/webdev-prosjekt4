@@ -1,10 +1,10 @@
 cache:
   key: ${CI_COMMIT_REF_SLUG}
   paths:
-    - projectum-quattuor/.npm/
-    - projectum-quattuor/cache/Cypress
-    - projectum-quattuor/node_modules/
-    - projectum-quattuor/package-lock.json
+  - projectum-quattuor/.npm/
+  - projectum-quattuor/cache/Cypress
+  - projectum-quattuor/node_modules/
+  - projectum-quattuor/package-lock.json
 
 image: cypress/base:10
 
@@ -18,56 +18,46 @@ variables:
 
 
 stages:
- - build
- - fresh_build
- - test
+  - build
+  - fresh_build
+  - test
 
 
 build-job:
-  stage:
-    build
+  stage: build
   script:
     - cd projectum-quattuor
     - npm ci
-    - npm run e2e:verify 
+    - npm run e2e:verify
 
 build-job-from-bottom-if-no-cache:
-  stage:
-    fresh_build
+  stage: fresh_build
   script:
     - cd projectum-quattuor
     - npm install
     - npm run e2e:verify
-  when:
-    on_failure
-
-
+  when: on_failure
 
 unittest-job:
-  stage:
-    test
+  stage: test
   script:
-   - cd projectum-quattuor
-   - npm test
-   when:
-    always
-    
+    - cd projectum-quattuor
+    - npm test
+  when: always
 
 integrationtest-job:
-  stage:
-    test
+  stage: test
   script:
-    - cd projectum-quattuor 
-    # start the server in the background
+    - cd projectum-quattuor
+  # start the server in the background
     - npm start --silent &
-    # run Cypress test in load balancing mode, pass id to tie jobs together
+  # run Cypress test in load balancing mode, pass id to tie jobs together
     - npm run e2e --record
-  when:
-    always
+  when: always
   artifacts:
     expire_in: 1 week
     when: always
     paths:
     - projectum-quattuor/cypress/screenshots
     - projectum-quattuor/cypress/videos
- 
+
