@@ -18,7 +18,6 @@ variables:
 stages:
   - build
   - test
-  - test-e2e
 
 before_script:
   # change directory to the React project
@@ -48,13 +47,12 @@ unittest-job:
     policy: pull
 
 integrationtest-job:
-  stage: test-e2e
+  stage: test
   script:
   # start the server in the background
     - npm start --silent &
   # run Cypress test in load balancing mode, pass id to tie jobs together
     - npm run e2e --record || npm install && npm start --silent && npm run e2e --record
-  when: always
   cache:
     key: $CI_COMMIT_REF_SLUG
     paths:
