@@ -1,5 +1,5 @@
 cache:
-  key: ${CI_COMMIT_REF_SLUG}
+  key: $CI_COMMIT_REF_SLUG
   paths:
   - projectum-quattuor/.npm/
   - projectum-quattuor/cache/Cypress
@@ -19,7 +19,6 @@ variables:
 
 stages:
   - build
-  - fresh_build
   - test
   - test-e2e
 
@@ -29,23 +28,17 @@ before_script:
 build-job:
   stage: build
   script:
-    - npm ci
+    - npm ci || npm install
     - npm run e2e:verify
-
-build-job-from-bottom-if-no-cache:
-  stage: fresh_build
-  script:
-    - npm install
-    - npm run e2e:verify
-  when: on_failure
 
 unittest-job:
   stage: test
   script:
-    - npm test
+    - npm test || npm install && npm test
+
   when: always
   cache:
-    key: ${CI_COMMIT_REF_SLUG}
+    key: $CI_COMMIT_REF_SLUG
     paths:
       - projectum-quattuor/.npm/
       - projectum-quattuor/cache/Cypress
@@ -59,10 +52,10 @@ integrationtest-job:
   # start the server in the background
     - npm start --silent &
   # run Cypress test in load balancing mode, pass id to tie jobs together
-    - npm run e2e --record
+    - npm run e2e --record || npm install & npm start --silent & npm run e2e --record
   when: always
   cache:
-    key: ${CI_COMMIT_REF_SLUG}
+    key: $CI_COMMIT_REF_SLUG
     paths:
       - projectum-quattuor/.npm/
       - projectum-quattuor/cache/Cypress
