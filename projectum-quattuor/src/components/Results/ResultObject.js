@@ -6,7 +6,7 @@ export default class ResultObject extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            information: this.props.information, // Make sure this is passed down as prop from App after search function
+            information: this.props.information,
             expanded: false,
         };
 
@@ -33,7 +33,7 @@ export default class ResultObject extends React.Component{
                 <ul key="1" className="result_list_expanded">
                     {Object.keys(information)/*Filters out unneccessary tags*/
                     .filter(attribute => 
-                            attribute !== "created" && attribute !== "edited")
+                        attribute !== "name" && attribute !== "created" && attribute !== "edited")
                     .map(attribute => 
                         <li key={attribute}>
                             <p>{attribute}: {information[attribute]}</p>
