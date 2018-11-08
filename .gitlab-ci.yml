@@ -62,8 +62,9 @@ integrationtest-job:
       - projectum-quattuor/node_modules/
       - projectum-quattuor/package-lock.json
     policy: pull
+  # Keep videoes & screenshots for four days for debugging over weekend if needed
   artifacts:
-    expire_in: 1 week
+    expire_in: 4 days
     when: always
     paths:
     - projectum-quattuor/cypress/screenshots
