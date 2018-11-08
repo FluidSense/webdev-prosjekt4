@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import ResultObject from './components/ResultObject';
+import ResultObject from './components/Results/ResultObject';
 import ExampleContainer from './components/example/ExampleContainer';
 
 class App extends Component {
