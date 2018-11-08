@@ -24,7 +24,7 @@ export default class ResultSet extends React.Component {
     loadTestContent(){
         this.setState({ loading: true });
 
-        fetch('https://swapi.co/api/people/?search=skywalker')
+        fetch('https://swapi.co/api/people')
             .then(response => {
                 if (response.ok) {
                     return response.json();
@@ -33,7 +33,7 @@ export default class ResultSet extends React.Component {
                 }
             })
             .then(data => this.setState({ resultSetJson: data.results, loading: false })) // This would be Luke, Anakin and Schmi Skywalker
-            .catch(error => this.setState({ error, loading: false }));
+            .catch(error => this.setState({ error: error, loading: false }));
     }
 
     render() {
