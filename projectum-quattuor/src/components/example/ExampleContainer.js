@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { exampleAction, exampleActionWithPayload } from '../../state/example/actions';
+import { exampleAction, exampleActionWithPayload, fetchDataThunk } from '../../state/example/actions';
 import { exampleToggledSelector, examplePayloadSelector } from '../../state/example/selectors';
 import { ExamplePresentation } from './ExamplePresentation';
 
@@ -19,6 +19,7 @@ class _ExampleContainer extends React.Component {
         return <ExamplePresentation 
                     toggler={this.props.example}
                     text={this.props.txt}
+                    api={this.props.callApi}
                 />;
     }
 }
@@ -35,7 +36,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => {
     return {
         doSomething: () => dispatch(exampleAction()),
-        doSomethingWithPayload: payload => dispatch(exampleActionWithPayload(payload))
+        doSomethingWithPayload: payload => dispatch(exampleActionWithPayload(payload)),
+        callApi: () => dispatch(fetchDataThunk()),
     }
 }
 

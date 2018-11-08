@@ -5,6 +5,7 @@ export const ExamplePresentation = (props) => {
         return (
             <>
                 <h1>{props.text}</h1>
+                <button onClick={() => props.api()}>Get this from a server?</button>
             </>
         );
     }   
