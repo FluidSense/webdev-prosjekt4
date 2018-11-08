@@ -45,6 +45,12 @@ unittest-job:
     - npm test
   when: always
   cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+      - projectum-quattuor/.npm/
+      - projectum-quattuor/cache/Cypress
+      - projectum-quattuor/node_modules/
+      - projectum-quattuor/package-lock.json
     policy: pull
 
 integrationtest-job:
@@ -56,6 +62,12 @@ integrationtest-job:
     - npm run e2e --record
   when: always
   cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+      - projectum-quattuor/.npm/
+      - projectum-quattuor/cache/Cypress
+      - projectum-quattuor/node_modules/
+      - projectum-quattuor/package-lock.json
     policy: pull
   artifacts:
     expire_in: 1 week
