@@ -74,12 +74,7 @@ class App extends Component {
                 </form>
               </div>
 
-              <div className="result_set">
-                <h3>Click the results to see more information</h3>
-
-                <ResultSet/>
-
-              </div>
+              <ResultSet/>
             </div>
           
           </div>
