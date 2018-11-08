@@ -24,7 +24,7 @@ export default class ResultSet extends React.Component {
     loadTestContent(){
         this.setState({ loading: true });
 
-        fetch('https://swapi.co/api/people/?search=skywalkersa')
+        fetch('https://swapi.co/api/people/?search=skywalker')
             .then(response => {
                 if (response.ok) {
                     return response.json();

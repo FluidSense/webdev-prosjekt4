@@ -31,7 +31,10 @@ export default class ResultObject extends React.Component{
             <div key={information.url}>
                 <p key="0" onClick={this.handleClick}>{information.name}</p>
                 <ul key="1" className="result_list_expanded">
-                    {Object.keys(information).map(attribute =>
+                    {Object.keys(information)/*Filters out unneccessary tags*/
+                    .filter(attribute => 
+                            attribute !== "created" && attribute !== "edited")
+                    .map(attribute => 
                         <li key={attribute}>
                             <p>{attribute}: {information[attribute]}</p>
                         </li>
