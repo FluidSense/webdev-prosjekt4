@@ -52,7 +52,6 @@ class Searchbutton extends Component {
         }
     }
 
-
     render() {
         return (
         <React.Fragment>
@@ -69,6 +68,7 @@ class Searchbutton extends Component {
         </div>
         <div class="result_wrapper">
         <h1>Results</h1>
+        
         {/*Section for checkboxes. Should be own componenet. */}
          <div className="checkboxes">
          <div className="checkbox">
