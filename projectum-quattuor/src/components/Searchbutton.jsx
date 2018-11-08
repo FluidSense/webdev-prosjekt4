@@ -107,17 +107,6 @@ class Searchbutton extends Component {
         </div>
                     </div>
         </div>
-
-        <div class="result_set">
-        <ul class="result_list"> {/*The objects below should be expandable link/button components that show the other properties of the returned JSON*/}
-            <li>Object 1</li>
-            <li>Object 2</li>
-            <li>Object 3</li>
-            <li>Object 4</li>
-            <li>Object 5</li>
-            <li>Object 6</li>
-        </ul>
-        </div>
     </React.Fragment>
         );
     }

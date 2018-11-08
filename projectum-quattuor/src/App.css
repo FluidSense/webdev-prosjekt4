@@ -3,6 +3,7 @@
   text-align: center;
   background-color: #ebebeb;
   align-content: center;
+  overflow: auto;
 }
 
 .App-header {
@@ -19,10 +20,6 @@
 h1{
   color: #3e3e3e;
   font-size: calc(8px + 4vmin);
-}
-
-.content{
-
 }
 
 .search_bar{
@@ -66,13 +63,10 @@ input[type="submit"]{
   overflow-y: auto;
 }
 
-.sort_filters{
-
-}
-
 .result_set{
   min-height: 15vh;
   max-height: 45vh;
+  margin-bottom: 3em;
   width: 35vw;
   display: inline-block;
   text-align: left;
@@ -83,6 +77,8 @@ input[type="submit"]{
   border: 1px;
   border-color: #3e3e3e;
   border-radius: 10px;
+  overflow: auto;
+  word-wrap: break-word;
 }
 
 .result_list, .history_list {
@@ -123,4 +119,10 @@ input[type="checkbox"] {
   transition: background-color 0.2s ease-in-out;
   background-color: green;
   cursor: pointer;
+
+}
+.result_list_expanded{
+  font-size: calc(7px + 1vmin);
+  margin: 0.3em 0 0 0;
+  list-style-type: inherit;
 }

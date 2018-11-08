@@ -4,6 +4,9 @@ import Searchbutton from '../src/components/Searchbutton';
 import Checkbox from './components/Checkbox';
 
 
+import ResultSet from './components/Results/ResultSet';
+import ExampleContainer from './components/example/ExampleContainer';
+
 class App extends Component {
 
 
@@ -23,12 +26,36 @@ class App extends Component {
           {/*Search bar*/}
         <Searchbutton />
 
-          {/*Searches are fetched from the database which records the users activity. The objects will only be loaded progressively as the user scrolls.*/}
-          {/*Result set*/}
+            {/*Result set*/}
+            <ExampleContainer />
+            {/*Searches are fetched from the database which records the users activity. The objects will only be loaded progressively as the user scrolls.*/}
 
-        
+
+            {/*Result set*/}
+            <div className="result_wrapper">
+              <h1>Results</h1>
+
+              <div className="sort_filters"> {/*These are options that the user can make in order to sort and filter the results. The idea is to make it so that changing the value will automatically perform a new request for the result set.*/}
+                <form>
+                    {/*For sorting the returned objects based on user choice*/}
+                    <select className="sorting">
+                      <option value="lexicographical">Alphabetically</option>
+                      <option value="by_added_date">By added date</option>
+                      <option value="by_added_date_rev">By added date reversed</option>
+                    </select>
+                </form>
+              </div>
+
+              <div className="result_set">
+                <h3>Click the results to see more information</h3>
+
+                <ResultSet/>
+
+              </div>
+            </div>
+          
+          </div>
         </div>
-      </div>
     );
   }
 }
