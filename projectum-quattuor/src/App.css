@@ -73,6 +73,7 @@ h1{
   border-color: #3e3e3e;
   border-radius: 10px;
   overflow: auto;
+  word-wrap: break-word;
 }
 
 .result_list, .history_list {
