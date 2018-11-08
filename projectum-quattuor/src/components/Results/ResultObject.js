@@ -6,19 +6,12 @@ export default class ResultObject extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            information: [], // Make sure this is passed down as prop from App after search function
+            information: this.props.information, // Make sure this is passed down as prop from App after search function
             expanded: false,
         };
 
     }
     /*Constructor closed*/
-
-    /*Test information, the state should be passed down as a prop from App*/
-    componentDidMount() {
-        fetch('https://swapi.co/api/people/?search=skywalker')
-            .then(response => response.json())
-            .then(data => this.setState({ information: data.results[0] })) // This would be Luke Skywalker
-    }
 
     /*Handles toggling of expansion*/
     handleClick = () => {
