@@ -36,7 +36,8 @@ unittest-job:
     # if cache is not present on this runner, install everything
     - npm test || npm install && npm test
 
-  when: always
+  # Inform about cache again, but with pull only policy.
+  # Default will push to cache again which is slow and unnecessary
   cache:
     key: $CI_COMMIT_REF_SLUG
     paths:
