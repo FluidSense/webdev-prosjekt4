@@ -44,6 +44,8 @@ unittest-job:
   script:
     - npm test
   when: always
+  cache:
+    policy: pull
 
 integrationtest-job:
   stage: test-e2e
@@ -53,6 +55,8 @@ integrationtest-job:
   # run Cypress test in load balancing mode, pass id to tie jobs together
     - npm run e2e --record
   when: always
+  cache:
+    policy: pull
   artifacts:
     expire_in: 1 week
     when: always
