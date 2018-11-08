@@ -1,3 +1,6 @@
+# cache using branch name
+# https://gitlab.com/help/ci/caching/index.md
+# Note that cache is per-runner
 cache:
   key: $CI_COMMIT_REF_SLUG
   paths:
@@ -12,28 +15,26 @@ variables:
   npm_config_cache: "$CI_PROJECT_DIR/projectum-quattuor/.npm"
   CYPRESS_CACHE_FOLDER: "$CI_PROJECT_DIR/projectum-quattuor/cache/Cypress"
 
-# cache using branch name
-# https://gitlab.com/help/ci/caching/index.md
-
-
-
 stages:
   - build
   - test
   - test-e2e
 
 before_script:
+  # change directory to the React project
   - cd projectum-quattuor
 
 build-job:
   stage: build
   script:
+    # If cache is present on this runner, use npm ci as it is faster and does not reinstall Cypress
     - npm ci || npm install
     - npm run e2e:verify
 
 unittest-job:
   stage: test
   script:
+    # if cache is not present on this runner, install everything
     - npm test || npm install && npm test
 
   when: always
