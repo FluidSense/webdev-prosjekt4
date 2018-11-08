@@ -22,10 +22,6 @@ h1{
   font-size: calc(8px + 4vmin);
 }
 
-.content{
-
-}
-
 .search_bar{
   height: 8vh;
   width: 35vw;
@@ -52,10 +48,6 @@ h1{
   border-color: #3e3e3e;
   border-radius: 10px;
   overflow-y: auto;
-}
-
-.sort_filters{
-
 }
 
 .result_set{
