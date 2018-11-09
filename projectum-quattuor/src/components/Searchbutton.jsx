@@ -8,8 +8,10 @@ class Searchbutton extends Component {
         super(props);
         this.state = {
             value: '',
-            data: [],
             isChecked: false,
+            resultSetJson: [], // Make sure this is passed down as prop from App after search function
+            loading: false,
+            error: null,
         };
     
         this.handleChange = this.handleChange.bind(this);
@@ -33,13 +35,20 @@ class Searchbutton extends Component {
     /* Method for fecthing from the API. */
     handleFetch() {
         fetch(APIQuery + this.state.value)
-        .then(response => response.json())
-        .then(data => this.setState({ data }));
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error('Request failed');
+                }
+            })
+            .then(data => this.setState({ resultSetJson: data.results, loading: false }))
+            .catch(error => this.setState({ error: error.message, loading: false }));
     }
 
     /* Stringifies JSON. */
     handleJson(){
-        return JSON.stringify(this.state.data);
+        return JSON.stringify(this.state.resultSetJson);
     }
 
     /* Handles state of checkboxes and sets state as to prepend necessary filter for request */
