@@ -80,7 +80,7 @@ export class Searchbutton extends Component {
                         type="checkbox"
                         checked={this.state.isChecked} 
                         onChange={this.handleCheck}
-                        value="planet/?search="
+                        value="planets/?search="
                         />
                 </label>
             </div>
