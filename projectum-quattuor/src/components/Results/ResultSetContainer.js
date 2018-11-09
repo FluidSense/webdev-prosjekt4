@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-//import { updateResultSet, updateErrorState, updateLoadingState } from '../../state/example/actions';
-import { resultSetSelector, errorSelector, loadingSelector } from '../../state/example/selectors';
+import { updateResultSet, updateErrorState, updateLoadingState } from '../../state/search/actions';
+import { resultSetSelector, errorSelector, loadingSelector } from '../../state/search/selectors';
 import { ResultSet } from './ResultSet';
 
 class _ResultSetContainer extends React.Component{
@@ -25,9 +25,19 @@ const mapStateToProps = (state) => {
     }
 };
 
+/* Callable actions as props */
+const mapDispatchToProps = dispatch => {
+    return {
+        pushToResultSet: payload => dispatch(updateResultSet(payload)),
+        pushToError: payload => dispatch(updateErrorState(payload)),
+        pushToLoading: payload => dispatch(updateLoadingState(payload)),
+    }
+}
+
 /* Connects the container to the store */
 const ResultSetContainer = connect(
     mapStateToProps,
+    mapDispatchToProps
 )(_ResultSetContainer);
 
 export default ResultSetContainer;

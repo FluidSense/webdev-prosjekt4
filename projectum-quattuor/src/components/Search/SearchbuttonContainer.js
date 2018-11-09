@@ -1,37 +1,30 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { updateResultSet, updateErrorState, updateLoadingState } from '../../state/example/actions';
-//import { resultSetSelector, errorSelector, loadingSelector } from '../../state/example/selectors';
+import { updateResultSet, updateErrorState, updateLoadingState } from '../../state/search/actions';
+import { resultSetSelector, errorSelector, loadingSelector } from '../../state/search/selectors';
 import { Searchbutton } from './Searchbutton';
 
 
 class _SearchbuttonContainer extends React.Component {
 
-    /*receiveResultUpdate = (val) => {
-        this.props.pushToResultSet(val);
-    }
-
-    receiveErrorUpdate = (val) => {
-        this.props.pushToError(val);
-    }
-
-    receiveLoadingUpdate = (val) => {
-        this.props.pushLoading(val);
-    }*/
-
-    componentDidMount() {
-        this.props.pushToResultSet('poop');
-    }
-
     render() {
         return <Searchbutton 
         pushToResultSet={this.props.pushToResultSet} 
         pushToError={this.props.pushToError} 
-        pushToLoading={this.props.pushLoading}
+        pushToLoading={this.props.pushToLoading}
         />;
     }
 
 }
+
+/* Gets desired props from the state store */
+const mapStateToProps = (state) => {
+    return {
+        resultSetJson: resultSetSelector(state),
+        error: errorSelector(state),
+        loading: loadingSelector(state),
+    }
+};
 
 /* Callable actions as props */
 const mapDispatchToProps = dispatch => {
@@ -44,6 +37,7 @@ const mapDispatchToProps = dispatch => {
 
 /* Connects the container to the store */
 const SearchbuttonContainer = connect(
+    mapStateToProps,
     mapDispatchToProps
 )(_SearchbuttonContainer);
 

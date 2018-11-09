@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
-import Searchbutton from './components/Search/Searchbutton';
 import Checkbox from './components/Search/Checkbox';
 
-
-import ResultSet from './components/Results/ResultSet';
+import SearchbuttonContainer from './components/Search/SearchbuttonContainer';
+import ResultSetContainer from './components/Results/ResultSetContainer';
 import ExampleContainer from './components/example/ExampleContainer';
 
 class App extends Component {
@@ -28,7 +27,7 @@ class App extends Component {
             <ExampleContainer />
 
             {/*Search bar*/}
-            <Searchbutton />
+            <SearchbuttonContainer />
 
             {/*Searches are fetched from the database which records the users activity. The objects will only be loaded progressively as the user scrolls.*/}
 
@@ -48,7 +47,7 @@ class App extends Component {
                 </form>
               </div>
 
-              <ResultSet/>
+              <ResultSetContainer/>
             </div>
           
           </div>

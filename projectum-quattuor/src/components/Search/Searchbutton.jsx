@@ -3,7 +3,7 @@ import Checkbox from './Checkbox';
 
 const APIQuery = 'https://swapi.co/api/';
 
-class Searchbutton extends Component {
+export class Searchbutton extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -36,7 +36,7 @@ class Searchbutton extends Component {
                 }
             })
             .then(data => {
-                this.props.pushToResultSet(data);
+                this.props.pushToResultSet(data.results);
                 this.props.pushToLoading(false);
             })
             .catch(error => {
@@ -114,5 +114,3 @@ class Searchbutton extends Component {
         );
     }
 }
-            
-export default Searchbutton;
