@@ -39,11 +39,11 @@ export class ResultSet extends React.Component {
         const displayResults = resultSetJson.slice(0, maxLoadObjects * loadedIndex);
 
         if(error){
-            return <p>{error}</p>
+            return <p className='error_message'>{error}</p>
         }
 
         if(loading){
-            return <p>Loading...</p>
+            return <p className='loading_message'>Loading...</p>
         }
 
         if(resultSetJson.length < 1){
