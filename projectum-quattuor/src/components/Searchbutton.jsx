@@ -13,20 +13,16 @@ class Searchbutton extends Component {
             loading: false,
             error: null,
         };
-    
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleCheck = this.handleCheck.bind(this);
     }
     
     /*Funcionality to handle form and state of form*/
     /* Changes state of value whenever the form is changed, in realtime. */
-    handleChange(event) {
+    handleChange = (event) => {
         console.log("sad");
         this.setState({value: event.target.value});
     }
     /* Prevents default formsubmit for now, and logs the state that is saved.*/
-    handleSubmit(event) {
+    handleSubmit = (event) => {
         console.log('The force is with you. You wrote:' + this.state.value);
         event.preventDefault();
         this.handleFetch();
@@ -52,7 +48,7 @@ class Searchbutton extends Component {
     }
 
     /* Handles state of checkboxes and sets state as to prepend necessary filter for request */
-    handleCheck(event) {
+    handleCheck = (event) => {
         this.setState({isChecked: event.target.isChecked});
         this.setState({value: event.target.value})
         if(this.state.value === event.target.value){
