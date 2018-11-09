@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import Searchbutton from '../src/components/Searchbutton';
-import Checkbox from './components/Checkbox';
+import Searchbutton from './components/Search/Searchbutton';
+import Checkbox from './components/Search/Checkbox';
 
 
 import ResultSet from './components/Results/ResultSet';
