@@ -1,7 +1,11 @@
 .App {
   height: 100vh;
   text-align: center;
-  background-color: rgb(30, 21, 75);
+  background: rgb(57,12,121);
+  background: -moz-radial-gradient(circle at bottom, rgba(57,12,121,1) 48%, rgba(30,21,75,1) 91%);
+  background: -webkit-radial-gradient(circle at bottom, rgba(57,12,121,1) 48%, rgba(30,21,75,1) 91%);
+  background: radial-gradient(circle at bottom, rgba(57,12,121,1) 48%, rgba(30,21,75,1) 91%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#390c79",endColorstr="#1e154b",GradientType=1);
   align-content: center;
   overflow: auto;
 }
