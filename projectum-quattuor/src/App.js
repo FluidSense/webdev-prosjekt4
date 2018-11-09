@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
 import './App.css';
+import Searchbutton from '../src/components/Searchbutton';
+import Checkbox from './components/Checkbox';
+
 
 import ResultSet from './components/Results/ResultSet';
 import ExampleContainer from './components/example/ExampleContainer';
 
 class App extends Component {
+
+
+
   render() {
+    
     return (
       <>
         <div className="App">
@@ -22,14 +29,7 @@ class App extends Component {
             <ExampleContainer />
 
             {/*Search bar*/}
-            <div className="search_wrapper">
-              <h1>Search</h1>
-              <form>
-                <label>
-                  <input type="text" className="search_bar" />
-                </label>
-              </form>
-            </div>
+            <Searchbutton />
 
             {/*Searches are fetched from the database which records the users activity. The objects will only be loaded progressively as the user scrolls.*/}
             <div className="saved_history">
