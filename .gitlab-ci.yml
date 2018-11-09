@@ -50,10 +50,8 @@ unittest-job:
 integrationtest-job:
   stage: test
   script:
-  # start the server in the background
-    - npm start --silent &
   # run Cypress test in load balancing mode, pass id to tie jobs together
-    - npm run e2e --record || npm install && npm start --silent && npm run e2e --record
+    - npm run e2e --record || npm install && npm run e2e --record
   cache:
     key: $CI_COMMIT_REF_SLUG
     paths:
