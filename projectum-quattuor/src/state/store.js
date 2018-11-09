@@ -1,4 +1,5 @@
-import { exampleReducer, searchReducer } from './example/reducer';
+import { exampleReducer } from './example/reducer';
+import { searchReducer } from './search/reducer';
 import { createStore, combineReducers } from 'redux';
 
 const reducers = combineReducers({
