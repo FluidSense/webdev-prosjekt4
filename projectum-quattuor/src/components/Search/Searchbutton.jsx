@@ -7,7 +7,8 @@ export class Searchbutton extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            value: '',
+            endpointValue: '',
+            searchValue: '',
             isChecked: false,
         };
     }
@@ -15,19 +16,21 @@ export class Searchbutton extends Component {
     /*Funcionality to handle form and state of form*/
     /* Changes state of value whenever the form is changed, in realtime. */
     handleChange = (event) => {
-        console.log("sad");
-        this.setState({value: event.target.value});
+        this.setState({searchValue: event.target.value});
     }
+
     /* Prevents default formsubmit for now, and logs the state that is saved.*/
     handleSubmit = (event) => {
-        console.log('The force is with you. You wrote:' + this.state.value);
         event.preventDefault();
         this.handleFetch();
     }
 
     /* Method for fecthing from the API. */
     handleFetch() {
-        fetch(APIQuery + this.state.value)
+        this.props.pushToError(null);  // Ensures that a previous error does not interfere with the new request
+        this.props.pushToResultSet([]);  // Removes lingering data for better user experience
+
+        fetch(APIQuery + this.state.endpointValue + this.state.searchValue)
             .then(response => {
                 if (response.ok) {
                     return response.json();
@@ -45,16 +48,11 @@ export class Searchbutton extends Component {
             })
     }
 
-    /* Stringifies JSON. */
-    handleJson(){
-        return JSON.stringify(this.state.resultSetJson);
-    }
-
     /* Handles state of checkboxes and sets state as to prepend necessary filter for request */
     handleCheck = (event) => {
         this.setState({isChecked: event.target.isChecked});
-        this.setState({value: event.target.value})
-        if(this.state.value === event.target.value){
+        this.setState({endpointValue: event.target.value})
+        if(this.state.endpointValue === event.target.value){
             this.setState({value: ''})
         }
     }
@@ -65,13 +63,12 @@ export class Searchbutton extends Component {
         <div className="search_wrapper"> 
             <form onSubmit={this.handleSubmit} method="#">
                 <label>
-                    <input type="text" className="search_bar" value={this.state.value} onChange={this.handleChange} />
+                    <input type="text" className="search_bar" value={this.state.searchValue} onChange={this.handleChange} />
                 </label>
                 <div>
                     <input type="submit" className="search_button" value="May the Force be with you." />
                 </div>
-            </form>  
-            {this.handleJson()}
+            </form>
         </div>
 
          <div className="checkboxes">
@@ -109,6 +106,17 @@ export class Searchbutton extends Component {
                         />
                 </label>
             </div>
+        </div>
+
+        <div className="sort_filters"> {/*These are options that the user can make in order to sort and filter the results. The idea is to make it so that changing the value will automatically perform a new request for the result set.*/}
+            <form>
+                {/*For sorting the returned objects based on user choice*/}
+                <select className="sorting">
+                    <option value="lexicographical">Alphabetically</option>
+                    <option value="by_added_date">By added date</option>
+                    <option value="by_added_date_rev">By added date reversed</option>
+                </select>
+            </form>
         </div>
         </React.Fragment>
         );
