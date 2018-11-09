@@ -7,8 +7,28 @@ import { Searchbutton } from './Searchbutton';
 
 class _SearchbuttonContainer extends React.Component {
 
+    /*receiveResultUpdate = (val) => {
+        this.props.pushToResultSet(val);
+    }
+
+    receiveErrorUpdate = (val) => {
+        this.props.pushToError(val);
+    }
+
+    receiveLoadingUpdate = (val) => {
+        this.props.pushLoading(val);
+    }*/
+
+    componentDidMount() {
+        this.props.pushToResultSet('poop');
+    }
+
     render() {
-        return <Searchbutton />;
+        return <Searchbutton 
+        pushToResultSet={this.props.pushToResultSet} 
+        pushToError={this.props.pushToError} 
+        pushToLoading={this.props.pushLoading}
+        />;
     }
 
 }

@@ -9,9 +9,6 @@ class Searchbutton extends Component {
         this.state = {
             value: '',
             isChecked: false,
-            resultSetJson: [], // Make sure this is passed down as prop from App after search function
-            loading: false,
-            error: null,
         };
     }
     
@@ -38,8 +35,14 @@ class Searchbutton extends Component {
                     throw new Error('Request failed');
                 }
             })
-            .then(data => this.setState({ resultSetJson: data.results, loading: false }))
-            .catch(error => this.setState({ error: error.message, loading: false }));
+            .then(data => {
+                this.props.pushToResultSet(data);
+                this.props.pushToLoading(false);
+            })
+            .catch(error => {
+                this.props.pushToError(error.message);
+                this.props.pushToLoading(false);
+            })
     }
 
     /* Stringifies JSON. */
