@@ -42,7 +42,6 @@ describe("Checks if the api is available, then does a testsearch for Skywalker."
         .should('have.value', 'people/?search=')
         .type('Skywalker {enter}')
     cy.get('.search_wrapper')
-        cy.contains('count')
         cy.contains('Luke Skywalker')
         cy.contains('Anakin Skywalker')
         cy.contains('Shmi Skywalker')
