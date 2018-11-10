@@ -34,7 +34,7 @@ unittest-job:
   stage: test
   script:
     # if cache is not present on this runner, install everything
-    - npm test || npm install && npm test
+    - npm test || (npm install && npm test)
 
   # Inform about cache again, but with pull only policy.
   # Default will push to cache again which is slow and unnecessary
@@ -51,7 +51,7 @@ integrationtest-job:
   stage: test
   script:
   # run Cypress test in load balancing mode, pass id to tie jobs together
-    - npm run e2e --record || npm install && npm run e2e --record
+    - npm run e2e --record || (npm install && npm run e2e --record)
   cache:
     key: $CI_COMMIT_REF_SLUG
     paths:
