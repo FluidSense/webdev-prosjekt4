@@ -25,29 +25,6 @@ export class Searchbutton extends Component {
         this.handleFetch();
     }
 
-    /* Method for fecthing from the API. */
-    handleFetch() {
-        this.props.pushToError(null);  // Ensures that a previous error does not interfere with the new request
-        this.props.pushToResultSet([]);  // Removes lingering data for better user experience
-
-        fetch(APIQuery + this.state.endpointValue + this.state.searchValue)
-            .then(response => {
-                if (response.ok) {
-                    return response.json();
-                } else {
-                    throw new Error('Request failed');
-                }
-            })
-            .then(data => {
-                this.props.pushToResultSet(data.results);
-                this.props.pushToLoading(false);
-            })
-            .catch(error => {
-                this.props.pushToError(error.message);
-                this.props.pushToLoading(false);
-            })
-    }
-
     /* Handles state of checkboxes and sets state as to prepend necessary filter for request */
     handleCheck = (event) => {
         this.setState({isChecked: event.target.isChecked});
@@ -61,12 +38,12 @@ export class Searchbutton extends Component {
         return (
         <div className="search_content">
         <div className="search_wrapper"> 
-            <form onSubmit={this.handleSubmit} method="#" id="search_form">
-                <label>
-                    <input type="text" className="search_bar" value={this.state.searchValue} onChange={this.handleChange} />
-                </label>
-            </form>
-            <button type="submit" form="search_form" className="search_button">May the Force be with you.</button>
+            <label>
+                <input type="text" className="search_bar" value={this.state.searchValue} onChange={this.handleChange} />
+            </label>
+            <div>
+                <input type="submit" className="search_button" value="May the Force be with you." onClick={() => this.props.searchWithApi(APIQuery + this.state.endpointValue + this.state.searchValue)}/>
+            </div>
         </div>
 
          <div className="checkboxes">
