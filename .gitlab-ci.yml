@@ -1,5 +1,8 @@
+# cache using branch name
+# https://gitlab.com/help/ci/caching/index.md
+# Note that cache is per-runner
 cache:
-  key: ${CI_COMMIT_REF_SLUG}
+  key: $CI_COMMIT_REF_SLUG
   paths:
   - projectum-quattuor/.npm/
   - projectum-quattuor/cache/Cypress
@@ -12,49 +15,54 @@ variables:
   npm_config_cache: "$CI_PROJECT_DIR/projectum-quattuor/.npm"
   CYPRESS_CACHE_FOLDER: "$CI_PROJECT_DIR/projectum-quattuor/cache/Cypress"
 
-# cache using branch name
-# https://gitlab.com/help/ci/caching/index.md
-
-
-
 stages:
   - build
-  - fresh_build
   - test
-  - test-e2e
 
 before_script:
+  # change directory to the React project
   - cd projectum-quattuor
 
 build-job:
   stage: build
   script:
-    - npm ci
+    # If cache is present on this runner, use npm ci as it is faster and does not reinstall Cypress
+    - npm ci || npm install
     - npm run e2e:verify
-
-build-job-from-bottom-if-no-cache:
-  stage: fresh_build
-  script:
-    - npm install
-    - npm run e2e:verify
-  when: on_failure
 
 unittest-job:
   stage: test
   script:
-    - npm test
-  when: always
+    # if cache is not present on this runner, install everything
+    - npm test || (npm install --only=prod && npm test)
+
+  # Inform about cache again, but with pull only policy.
+  # Default will push to cache again which is slow and unnecessary
+  cache:
+    key: $CI_COMMIT_REF_SLUG
+    paths:
+      - projectum-quattuor/.npm/
+      - projectum-quattuor/cache/Cypress
+      - projectum-quattuor/node_modules/
+      - projectum-quattuor/package-lock.json
+    policy: pull
 
 integrationtest-job:
-  stage: test-e2e
+  stage: test
   script:
-  # start the server in the background
-    - npm start --silent &
   # run Cypress test in load balancing mode, pass id to tie jobs together
-    - npm run e2e --record
-  when: always
+    - npm run e2e --record || (npm install && npm run e2e --record)
+  cache:
+    key: $CI_COMMIT_REF_SLUG
+    paths:
+      - projectum-quattuor/.npm/
+      - projectum-quattuor/cache/Cypress
+      - projectum-quattuor/node_modules/
+      - projectum-quattuor/package-lock.json
+    policy: pull
+  # Keep videoes & screenshots for four days for debugging over weekend if needed
   artifacts:
-    expire_in: 1 week
+    expire_in: 4 days
     when: always
     paths:
     - projectum-quattuor/cypress/screenshots
