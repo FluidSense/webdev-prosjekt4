@@ -8,8 +8,7 @@ import { Searchbutton } from './Searchbutton';
 class _SearchbuttonContainer extends React.Component {
 
     render() {
-        return <Searchbutton searchWithApi={this.props.searchWithApi}
-        />;
+        return <Searchbutton searchWithApi={this.props.searchWithApi}/>;
     }
 
 }
