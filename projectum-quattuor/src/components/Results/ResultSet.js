@@ -55,8 +55,8 @@ export class ResultSet extends React.Component {
             <div className="result_set" onScroll={this.handleScroll}>
                 <h3>Click the results to see more information</h3>
                 <ul className="result_list">
-                    {displayResults.map(object =>
-                        <li key={object.url}>
+                    {displayResults.map((object, i) =>
+                        <li key={i}>
                             <ResultObject information={object} />
                         </li>
                     )}

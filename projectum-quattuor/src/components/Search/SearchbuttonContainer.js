@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { updateResultSet, updateErrorState, updateLoadingState, fetchDataThunk } from '../../state/search/actions';
+import { fetchDataThunk } from '../../state/search/actions';
 import { resultSetSelector, errorSelector, loadingSelector } from '../../state/search/selectors';
 import { Searchbutton } from './Searchbutton';
 
