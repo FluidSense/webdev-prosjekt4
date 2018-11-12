@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/label-has-for */
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { Component } from 'react';
 import './App.css';
 import Checkbox from './components/Search/Checkbox';
@@ -16,12 +18,12 @@ class App extends Component {
             {/*Search bar*/}
             <SearchbuttonContainer />
 
-            {/*Result set*/}
+            {/* Result set */}
             <div className="result_wrapper">
               <h1>Results</h1>
               <ResultSetContainer/>
             </div>
-          
+
           </div>
         </div>
     );

@@ -20,7 +20,7 @@ export const fetchDataThunk = (fetch_url) => {
             })
             .then(data => {
                 if(data !== undefined){ // Prevents JSON data to be updated if data does not exist
-                    dispatch(updateResultSet(data));
+                    dispatch(updateResultSet(data.results));
                 }
             })
     }

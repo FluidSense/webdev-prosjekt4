@@ -5,7 +5,7 @@ const initialState = {
     loading: false,
 };
 
-export const searchReducer = (
+const searchReducer = (
     state = initialState,
     action,
 ) => {
@@ -16,23 +16,25 @@ export const searchReducer = (
                 ...state,
                 resultSetJson: payload,
                 error: null, // Ensures that a previous error does not interfere with the new request
-                loading: false
+                loading: false,
             };
         case 'FETCH_ERROR_OCCURRED':
             return{
                 ...state,
                 resultSetJson: [], // Removes lingering data for better user experience
                 error: payload,
-                loading: false
+                loading: false,
             }
         case 'FETCH_LOADING_IN_PROGRESS':
             return {
                 ...state,
                 resultSetJson: [], // Removes lingering data for better user experience
                 loading: payload.loading,
-                loadingUrl: payload.loadingUrl
+                loadingUrl: payload.loadingUrl,
             }
         default:
             return state;
     }
 }
+
+export default searchReducer;
