@@ -1,14 +1,3 @@
-# cache using branch name
-# https://gitlab.com/help/ci/caching/index.md
-# Note that cache is per-runner
-cache:
-  key: $CI_COMMIT_REF_SLUG
-  paths:
-  - projectum-quattuor/.npm/
-  - projectum-quattuor/cache/Cypress
-  - projectum-quattuor/node_modules/
-  - projectum-quattuor/package-lock.json
-
 image: cypress/base:10
 
 variables:
@@ -26,41 +15,22 @@ before_script:
 build-job:
   stage: build
   script:
-    # If cache is present on this runner, use npm ci as it is faster and does not reinstall Cypress
-    - npm ci || npm install
-    - npm run e2e:verify
+   - npm ci || npm install
+   - npm run e2e:verify
+
 
 unittest-job:
   stage: test
   script:
     # if cache is not present on this runner, install everything
-    - npm test || (npm install --only=prod && npm test)
+    - (npm ci && npm test) || (npm install --only=prod && npm test)
 
-  # Inform about cache again, but with pull only policy.
-  # Default will push to cache again which is slow and unnecessary
-  cache:
-    key: $CI_COMMIT_REF_SLUG
-    paths:
-      - projectum-quattuor/.npm/
-      - projectum-quattuor/cache/Cypress
-      - projectum-quattuor/node_modules/
-      - projectum-quattuor/package-lock.json
-    policy: pull
-
-integrationtest-job:
+  integrationtest-job:
   stage: test
   script:
   # run Cypress test in load balancing mode, pass id to tie jobs together
-    - npm run e2e --record || (npm install && npm run e2e --record)
-  cache:
-    key: $CI_COMMIT_REF_SLUG
-    paths:
-      - projectum-quattuor/.npm/
-      - projectum-quattuor/cache/Cypress
-      - projectum-quattuor/node_modules/
-      - projectum-quattuor/package-lock.json
-    policy: pull
-  # Keep videoes & screenshots for four days for debugging over weekend if needed
+    - (npm ci && npm run e2e --record) || (npm install && npm run e2e --record)
+# Keep videoes & screenshots for four days for debugging over weekend if needed
   artifacts:
     expire_in: 4 days
     when: always
