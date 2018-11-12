@@ -87,8 +87,8 @@ export default class Searchbutton extends React.Component {
           </div>
         </div>
 
-        {/* These are options that the user can make in order to sort and filter the results. 
-        The idea is to make it so that changing the value will automatically perform a new 
+        {/* These are options that the user can make in order to sort and filter the results.
+        The idea is to make it so that changing the value will automatically perform a new
         request for the result set. */}
         <div className="sort_filters">
           <form>
