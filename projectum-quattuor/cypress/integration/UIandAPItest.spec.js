@@ -32,6 +32,17 @@ describe("Tests for UI elements. Checks if things are reachable, and if filters 
                 .click()
                 .should('have.value', '')
     })
+    it('Searches for Skywalker, check is result expands on click expanding', function() {
+        cy.get('.checkbox:nth-child(3)')
+            .click()
+        cy.get('.search_bar')
+            .should('have.value', 'people/?search=')
+            .type('Skywalker {enter}')
+            cy.get('li:nth-child(1)')
+                .click()
+                cy.contains('height: 172')
+
+})
 })
 
 describe("Checks if the api is available, then does a testsearch for Skywalker.", function(){
@@ -54,14 +65,14 @@ describe("Checks if the api is available, then does a testsearch for Skywalker."
             expect(response.body.results[2]).to.have.property('name', 'Shmi Skywalker')
       })  
     })
-    it('Checks if an erroneous APIcall catches error.', function() {
-        cy.get('.checkbox:nth-child(3)')
-        .click()
-        cy.get('.search_bar')
-            .should('have.value', 'planet/?search=')
-            .type('Skywalker {enter}')
-            cy.contains('.loading_message')
-        cy.contains('.error_message')
-    })
+
    }) 
+   it('Checks if an erroneous APIcall catches error.', function() {
+    cy.get('.checkbox:nth-child(3)')
+    .click()
+    cy.get('.search_bar')
+        .should('have.value', 'people/?search=')
+        .type('Skywalker {enter}')
+    cy.contains('.error_message')
+})
 })
