@@ -1,0 +1,1 @@
+export const getRemoteResource = () => {return {type:'THIS_SHOULD_GET_FROM_REMOTE_IN_THE_FUTURE'}};
