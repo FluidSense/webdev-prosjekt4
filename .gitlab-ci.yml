@@ -58,7 +58,7 @@ integrationtest-job:
   stage: test
   script:
   # run Cypress test in load balancing mode, pass id to tie jobs together
-    -(npm start --silent & npm run e2e --record || (npm ci && (npm start --silent & npm run e2e --record)) || (npm install && (npm start --silent & npm run e2e --record))
+    - (npm start --silent & npm run e2e --record) || (npm ci && (npm start --silent & npm run e2e --record)) || (npm install && (npm start --silent & npm run e2e --record))
   cache:
     key: $CI_COMMIT_REF_SLUG
     paths:
