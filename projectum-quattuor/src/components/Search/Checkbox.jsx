@@ -1,32 +1,21 @@
 import React,{Component}  from 'react'
 
 class Checkbox extends Component {
-    constructor() {
-        super();
-        this.state = {
-            isChecked: false,
-        }
-    }
 
 render(){
-    const { label } = this.props;
-    const { isChecked } = this.state;
+    const labelname = this.props.label
+    
     return(
-        <div className="checkbox">
-            <label>
-                <input
-                    type="checkbox"
-                    value={label} 
-                    checked={isChecked} 
-                    onChange
-                
-                    />
-                {label}
-            </label>
-        </div>
+        <label className="check_label">{this.props.label}
+        <input
+            type="checkbox"
+            id={this.props.label}
+            checked={this.props.isChecked} 
+            onChange={this.props.handleCheck}
+            value={labelname.toLowerCase() + "/?search="}
+        />
+    </label>
     )
 }
-
 }
-
 export default Checkbox;
