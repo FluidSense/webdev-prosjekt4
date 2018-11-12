@@ -5,31 +5,26 @@ import { searchedRecentlyWords } from '../../state/wordcloud/selectors';
 import Lightsabers from './Lightsaber';
 
 class _WordCloud extends React.Component {
+  componentDidMount() {
+    this.props.getWordList();
+  }
 
-    componentDidMount(){
-        this.props.getWordList();
-    }
-
-    render(){
-        return <Lightsabers words={this.props.words}/>
-    }
+  render() {
+    return <Lightsabers words={this.props.words} />;
+  }
 }
 
-const mapStateToProps = state => {
-    return {
-        words: searchedRecentlyWords(state),
-    }
-}
+const mapStateToProps = state => ({
+  words: searchedRecentlyWords(state),
+});
 
-const mapDispatchToProps = dispatch => {
-    return {
-        getWordList: (URL) => dispatch(getRemoteResource(URL)),
-    }
-}
+const mapDispatchToProps = dispatch => ({
+  getWordList: URL => dispatch(getRemoteResource(URL)),
+});
 
 const WordCloud = connect(
-    mapStateToProps,
-    mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps,
 )(_WordCloud);
 
 export default WordCloud;
