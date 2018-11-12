@@ -55,7 +55,7 @@ export default class ResultSet extends React.Component {
 
     return (
 
-      <div className="result_set" onScroll={this.handleScroll}>
+      <div className="result_set" onScroll={e => this.handleScroll(e)}>
         <h3>Click the results to see more information</h3>
         <ul className="result_list">
           {displayResults.map((object, i) => (

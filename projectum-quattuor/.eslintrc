@@ -5,6 +5,12 @@
             "error",
             "as-needed"
         ],
+        "no-unused-expressions": [
+            "error",
+            {
+                "allowTernary": true
+            }
+        ],
         "react/prefer-stateless-function": [
             1,
             {

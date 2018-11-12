@@ -13,7 +13,6 @@ export default class ResultObject extends React.Component {
 
   /* Handles toggling of expansion */
   handleClick() {
-    // eslint-disable-next-line no-unused-expressions
     this.state.expanded ? this.setState({ expanded: false }) : this.setState({ expanded: true });
   }
 
@@ -24,13 +23,13 @@ export default class ResultObject extends React.Component {
     /* Toggles expansion on/off */
     if (!this.state.expanded) {
       /* eslint-disable-next-line */
-      return <p onClick={this.handleClick}>{information.name}</p>;
+      return <p onClick={() => this.handleClick()}>{information.name}</p>;
     }
 
     return (
       <div key={information.url}>
         {/* eslint-disable-next-line */}
-        <div key="0" onClick={this.handleClick} role="button">{information.name}</div>
+        <div key="0" onClick={() => this.handleClick()} role="button">{information.name}</div>
         <ul key="1" className="result_list_expanded">
           {Object.keys(information)/* Filters out unneccessary tags */
             .filter(attribute => attribute !== 'name' && attribute !== 'created' && attribute !== 'edited')
