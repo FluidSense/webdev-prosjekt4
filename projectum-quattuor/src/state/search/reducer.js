@@ -29,7 +29,8 @@ export const searchReducer = (
             return {
                 ...state,
                 resultSetJson: [], // Removes lingering data for better user experience
-                loading: true
+                loading: payload.loading,
+                loadingUrl: payload.loadingUrl
             }
         default:
             return state;
