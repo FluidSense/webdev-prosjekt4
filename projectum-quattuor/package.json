@@ -25,7 +25,8 @@
     "e2e": "cypress run",
     "e2e:verify": "cypress verify",
     "cypress:open": "cypress open",
-    "lint":"eslint src/"
+    "lint": "eslint src/",
+    "lint:fix":"eslint src/ --fix"
   },
   "eslintConfig": {
     "extends": "react-app"
