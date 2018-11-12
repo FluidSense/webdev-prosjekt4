@@ -17,6 +17,7 @@ variables:
 
 stages:
   - build
+  - lint
   - test
 
 before_script:
@@ -29,6 +30,12 @@ build-job:
     # If cache is present on this runner, use npm ci as it is faster and does not reinstall Cypress
     - npm ci || npm install
     - npm run e2e:verify
+
+lint-job:
+  stage: lint
+  script:
+    - npm ci || npm install
+    - npm run lint
 
 unittest-job:
   stage: test
@@ -51,7 +58,7 @@ integrationtest-job:
   stage: test
   script:
   # run Cypress test in load balancing mode, pass id to tie jobs together
-    - npm run e2e --record || (npm install && npm run e2e --record)
+    - npm run e2e --record || (npm ci && npm run e2e --record) || (npm install && npm run e2e --record)
   cache:
     key: $CI_COMMIT_REF_SLUG
     paths:
