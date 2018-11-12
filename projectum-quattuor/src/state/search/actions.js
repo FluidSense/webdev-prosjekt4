@@ -1,7 +1,7 @@
 /* Data fetching helper functions*/
-export const updateResultSet = (param) => {return {type:'PUSH_RESULT', payload: param}};
-export const updateErrorState = (param) => { return { type: 'PUSH_ERROR', payload: param } };
-export const updateLoadingState = (loading, loadingUrl) => { return { type: 'PUSH_LOADING', payload: {loading, loadingUrl} } };
+export const updateResultSet = (param) => { return { type:'FETCHED_RESULTS_RECEIVED', payload: param}};
+export const updateErrorState = (param) => { return { type: 'FETCH_ERROR_OCCURRED', payload: param } };
+export const updateLoadingState = (loading, loadingUrl) => { return { type: 'FETCH_LOADING_IN_PROGRESS', payload: {loading, loadingUrl} } };
 
 // Fetches data from API
 export const fetchDataThunk = (fetch_url) => {
@@ -12,7 +12,6 @@ export const fetchDataThunk = (fetch_url) => {
         fetch(fetch_url)
             .then(response => {
                 if (response.ok) {
-                    dispatch(updateLoadingState(false, fetch_url));
                     return response.json();
                 }
             }, error => { // Pushes error
