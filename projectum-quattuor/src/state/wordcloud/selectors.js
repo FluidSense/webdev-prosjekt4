@@ -1,0 +1,1 @@
+export const searchedRecentlyWords = (state) => state.wordcloud.recentWords;
