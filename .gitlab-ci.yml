@@ -23,7 +23,7 @@ unittest-job:
   stage: test
   script:
     # if cache is not present on this runner, install everything
-    - (npm ci && npm test) || (npm install --only=prod && npm test)
+    - (npm install --only=prod && npm test) || (npm ci && npm test)
 
 integrationtest-job:
   stage: test
