@@ -25,7 +25,7 @@ unittest-job:
     # if cache is not present on this runner, install everything
     - (npm ci && npm test) || (npm install --only=prod && npm test)
 
-  integrationtest-job:
+integrationtest-job:
   stage: test
   script:
   # run Cypress test in load balancing mode, pass id to tie jobs together
