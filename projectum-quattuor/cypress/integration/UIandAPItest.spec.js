@@ -10,7 +10,7 @@ describe("Tests for UI elements. Checks if things are reachable, and if filters 
 
 
     it('Searches for Skywalker, check is result expands on click expanding', function() {
-        cy.get('.check_label:nth-child(1)')
+        cy.get('.check_label:nth-child(3)')
             .click()
         cy.get('.search_bar')
             .clear()
@@ -25,11 +25,12 @@ describe("Tests for UI elements. Checks if things are reachable, and if filters 
 
 describe("Checks if the api is available, then does a testsearch for Skywalker.", function(){
    it('Sets a filter and searches for characters with the name "Skywalker", then checks if the document body contains the desired results.', function() {
-    cy.get('.check_label:nth-child(1)')
+    cy.get('.check_label:nth-child(3)')
         .click()
     cy.get('.search_bar')
+        .clear()
         .type('Skywalker {enter}')
-    cy.get('.search_wrapper')
+    cy.get('.result_set')
         cy.contains('Luke Skywalker')
         cy.contains('Anakin Skywalker')
         cy.contains('Shmi Skywalker')
@@ -43,14 +44,14 @@ describe("Checks if the api is available, then does a testsearch for Skywalker."
       })  
     })
    }) 
-   it('Checks if an erroneous APIcall catches error.', function() {
-    cy.get('.check_label:nth-child(3)')
+   it('Checks if an erroneous search displays nothing.', function() {
+    cy.get('.check_label:nth-child(1)')
     .click()
     cy.get('.search_bar')
         .clear()
         .type('Skywalker {enter}')
     cy.wait(1000)
-    cy.get('.error_message')
-    cy.contains('Cannot')
+    cy.get('.result_wrapper')
+    cy.contains('No')
 })
 })
