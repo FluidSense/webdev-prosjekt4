@@ -1,7 +1,6 @@
 import React from 'react';
 
 export default class ResultObject extends React.Component {
-  /* Constructor closed */
   constructor(props) {
     super(props);
     this.state = {
@@ -9,7 +8,6 @@ export default class ResultObject extends React.Component {
       expanded: false,
     };
   }
-  /* Constructor closed */
 
   /* Handles toggling of expansion */
   handleClick() {
@@ -22,6 +20,7 @@ export default class ResultObject extends React.Component {
 
     /* Toggles expansion on/off */
     if (!this.state.expanded) {
+      /* Line below is disabled at the moment as each list object does not need keyboard listener */
       /* eslint-disable-next-line */
       return <p onClick={() => this.handleClick()}>{information.name}</p>;
     }

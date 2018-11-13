@@ -8,8 +8,10 @@ export default class ResultSet extends React.Component {
     super(props);
     this.state = {
       loadedIndex: 1,
-      /* This should be moved from state if dynamic changing of maximum objects is not desired.
-      Could also be specified as a prop or state in Redux. */
+      /*
+      This should be moved from state if dynamic changing of maximum objects is not desired.
+      Could also be specified as a prop or state in Redux.
+      */
       maxLoadObjects: 6,
       fullyLoaded: false,
     };
