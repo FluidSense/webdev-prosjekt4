@@ -5,7 +5,7 @@ const APIQuery = 'https://swapi.co/api/';
 const searchLabels =["Planets","Starships","People","Species","Films","Vehicles"];
 
 
-export class Searchbutton extends Component {
+export default class Searchbutton extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -75,7 +75,7 @@ export class Searchbutton extends Component {
 
         <div className="sort_filters"> {/*These are options that the user can make in order to sort and filter the results. The idea is to make it so that changing the value will automatically perform a new request for the result set.*/}
             {/*For sorting the returned objects based on user choice*/}
-            <a href="#" className="sort_button">Choose sort method</a>
+            <a href=    "#" className="sort_button">Choose sort method</a>
             <ul className="sorting">
                 <li className="sort_optn" href="#" value="lexicographical">Alphabetically</li>
                 <li className="sort_optn" href="#" value="by_added_date">By added date</li>

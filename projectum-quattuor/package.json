@@ -12,7 +12,12 @@
     "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
-    "cypress":"^3.1.1"
+    "cypress": "^3.1.1",
+    "eslint": "5.6.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.11.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -21,7 +26,9 @@
     "eject": "react-scripts eject",
     "e2e": "cypress run",
     "e2e:verify": "cypress verify",
-    "cypress:open": "cypress open"
+    "cypress:open": "cypress open",
+    "lint": "eslint src/",
+    "lint:fix": "eslint src/ --fix"
   },
   "eslintConfig": {
     "extends": "react-app"
