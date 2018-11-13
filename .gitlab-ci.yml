@@ -40,7 +40,7 @@ lint-job:
 unittest-job:
   stage: test
   script:
-    # if cache is not present on this runner, install everything
+    # if cache is not present on this runner, install everything needed for unit testing
     - npm test || (npm install --only=prod && npm test)
 
   # Inform about cache again, but with pull only policy.
@@ -57,8 +57,11 @@ unittest-job:
 integrationtest-job:
   stage: test
   script:
-  # run Cypress test in load balancing mode, pass id to tie jobs together
-    - npm run e2e --record || (npm ci && npm run e2e --record) || (npm install && npm run e2e --record)
+    # First condition: If cache present, start project and run e2e
+    # Second condition: If package-lock is present, install with npm ci and run e2e
+    # Third condition: If none of the above, do a full install and run e2e.
+    # This way, we achieve lowest time usage if possible, while supporting missing package-lock.
+    - (npm start --silent & npm run e2e --record) || (npm ci && (npm start --silent & npm run e2e --record)) || (npm install && (npm start --silent & npm run e2e --record))
   cache:
     key: $CI_COMMIT_REF_SLUG
     paths:
