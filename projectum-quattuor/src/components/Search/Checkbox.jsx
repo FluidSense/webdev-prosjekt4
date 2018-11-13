@@ -1,22 +1,20 @@
-import React,{Component}  from 'react'
+import React from 'react';
 
-class Checkbox extends Component {
+const Checkbox = (props) => {
+  const { label } = props;
 
-render(){
-    const { label } = this.props;
-    
-    return(
-        <label className="check_label">{label}
-        <input
-            onclick={this.toggleClass} 
-            type="checkbox"
-            id={this.props.key}
-            checked={this.props.isChecked} 
-            onChange={this.props.handleCheck}
-            value={label.toLowerCase() + "/?search="}
-        />
-         </label>
-        )
-    }
-}
-    export default Checkbox;
+  return (
+    <label htmlFor={props.key} className="check_label">
+      {label}
+      <input
+        onClick={toggleClass}
+        type="checkbox"
+        id={props.key}
+        checked={props.isChecked}
+        onChange={props.handleCheck}
+        value={`${label.toLowerCase()}/?search=`}
+      />
+    </label>
+  );
+};
+export default Checkbox;
