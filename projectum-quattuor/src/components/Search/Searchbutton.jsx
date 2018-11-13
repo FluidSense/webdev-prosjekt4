@@ -1,5 +1,5 @@
-import React,{Component}  from 'react'
-import Checkbox from './Checkbox'
+import React,{Component}  from 'react';
+import Checkbox from './Checkbox';
 
 const APIQuery = 'https://swapi.co/api/';
 const searchLabels =["Planets","Starships","People","Species","Films","Vehicles"];
