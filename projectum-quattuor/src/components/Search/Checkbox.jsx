@@ -6,7 +6,7 @@ render(){
     const { label } = this.props;
     
     return(
-        <label className="check_label">{this.props.label}
+        <label className="check_label">{label}
         <input
             onclick={this.toggleClass} 
             type="checkbox"
