@@ -50,13 +50,13 @@ export default class ResultSet extends React.Component {
       return <p className="loading_message">Loading...</p>;
     }
 
-        if(resultSetJson === undefined || resultSetJson.length < 1){
-            return <p>No results retrieved.</p>
-        }
+    if (resultSetJson === undefined || resultSetJson.length < 1) {
+      return <p>No results retrieved.</p>;
+    }
 
-        const displayResults = resultSetJson.slice(0, maxLoadObjects * loadedIndex);
-        
-        return (
+    const displayResults = resultSetJson.slice(0, maxLoadObjects * loadedIndex);
+
+    return (
 
       <div className="result_set" onScroll={e => this.handleScroll(e)}>
         <h3>Click the results to see more information</h3>

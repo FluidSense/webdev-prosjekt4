@@ -18,17 +18,17 @@ export default class Searchbutton extends Component {
     
     /*Funcionality to handle form and state of form*/
     /* Changes state of value whenever the form is changed, in realtime. */
-    handleChange = (event) => {
+    handleChange(event) {
         this.setState({searchValue: event.target.value});
     }
 
     /* Prevents default formsubmit for now, and logs the state that is saved.*/
-    handleSubmit = (event) => {
+    handleSubmit(event) {
         event.preventDefault();
     }
 
     /* Handles state of checkboxes and sets state as to prepend necessary filter for request */
-    handleCheck = (event) => {
+    handleCheck(event){
         this.setState({isChecked: event.target.isChecked});
         this.setState({endpointValue: event.target.value});
         if(this.state.endpointValue === event.target.value){
@@ -46,8 +46,8 @@ export default class Searchbutton extends Component {
                 key={i}
                 className="madeBoxes"
                 endpointValue={this.state.endpointValue}
-                handleChange={this.handleChange}
-                handleCheck={this.handleCheck}
+                handleChange={e => this.handleChange(e)}
+                handleCheck={e => this.handleCheck(e)}
                 label={searchLabels[i]}
                 />)
     }
@@ -60,7 +60,7 @@ export default class Searchbutton extends Component {
         <div className="search_wrapper">
         <form onSubmit={this.handleSubmit} method="#">
         <label>
-                <input type="text" className="search_bar" value={this.state.searchValue} onChange={this.handleChange} />
+                <input type="text" className="search_bar" value={this.state.searchValue} onChange={e => this.handleChange(e)} />
             </label>
             <div>
                 <input type="submit" className="search_button" value="May the Force be with you." onClick={() =>  this.props.searchWithApi(APIQuery + this.state.endpointValue + this.state.searchValue)}/>
