@@ -1,32 +1,20 @@
-import React,{Component}  from 'react'
+import React from 'react';
 
-class Checkbox extends Component {
-    constructor() {
-        super();
-        this.state = {
-            isChecked: false,
-        }
-    }
+const Checkbox = (props) => {
+  const { label, subKey } = props;
+  const sub1 = `${subKey}1`;
 
-render(){
-    const { label } = this.props;
-    const { isChecked } = this.state;
-    return(
-        <div className="checkbox">
-            <label>
-                <input
-                    type="checkbox"
-                    value={label} 
-                    checked={isChecked} 
-                    onChange
-                
-                    />
-                {label}
-            </label>
-        </div>
-    )
-}
-
-}
-
+  return (
+    <label htmlFor={sub1} className="check_label">
+      {label}
+      <input
+        type="checkbox"
+        id={sub1}
+        checked={props.isChecked}
+        onChange={props.handleCheck}
+        value={`${label.toLowerCase()}/?search=`}
+      />
+    </label>
+  );
+};
 export default Checkbox;

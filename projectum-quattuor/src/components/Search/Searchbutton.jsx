@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { Component } from 'react';
+import Checkbox from './Checkbox';
 
 const APIQuery = 'https://swapi.co/api/';
+const searchLabels = ['Planets', 'Starships', 'People', 'Species', 'Films', 'Vehicles'];
 
-export default class Searchbutton extends React.Component {
+
+export default class Searchbutton extends Component {
   constructor(props) {
     super(props);
     this.state = {
       endpointValue: '',
       searchValue: '',
-      isChecked: false,
     };
   }
 
@@ -21,86 +23,67 @@ export default class Searchbutton extends React.Component {
   /* Prevents default formsubmit for now, and logs the state that is saved. */
   handleSubmit(event) {
     event.preventDefault();
-    this.handleFetch();
   }
 
   /* Handles state of checkboxes and sets state as to prepend necessary filter for request */
   handleCheck(event) {
-    this.setState({ isChecked: event.target.isChecked });
     this.setState({ endpointValue: event.target.value });
-    // if (this.state.endpointValue === event.target.value) {
-    //   this.setState({ value: '' });
-    // }
+    if (this.state.endpointValue === event.target.value) {
+      this.setState({ endpointValue: '' });
+    }
+  }
+
+  /* Creates the checkboxes dynamically from the list of labels. */
+
+  createBoxes() {
+    const checkboxArray = [];
+    searchLabels.map(item => checkboxArray.push(
+      <Checkbox
+        key={item}
+        className="madeBoxes"
+        subKey={item}
+        endpointValue={this.state.endpointValue}
+        handleChange={e => this.handleChange(e)}
+        handleCheck={e => this.handleCheck(e)}
+        label={item}
+      />,
+    ));
+    return checkboxArray;
   }
 
   render() {
     return (
-      <React.Fragment>
+      <div className="search_content">
         <div className="search_wrapper">
-          <label htmlFor="searchBar">
-            <input type="text" className="search_bar" value={this.state.searchValue} onChange={e => this.handleChange(e)} />
-          </label>
-          <div>
-            <input type="submit" className="search_button" value="May the Force be with you." onClick={() => this.props.searchWithApi(APIQuery + this.state.endpointValue + this.state.searchValue)} />
-          </div>
+          <form onSubmit={this.handleSubmit} method="#">
+            <label htmlFor="searchBar">
+              <input type="text" id="searchbar" className="search_bar" value={this.state.searchValue} onChange={e => this.handleChange(e)} />
+            </label>
+            <div>
+              <input type="submit" className="search_button" value="May the Force be with you." onClick={() => this.props.searchWithApi(APIQuery + this.state.endpointValue + this.state.searchValue)} />
+            </div>
+          </form>
+
         </div>
 
         <div className="checkboxes">
-          <div className="checkbox">
-            <label htmlFor="planetBox">
-              Planet
-              <input
-                className="checkboxes"
-                id="planetBox"
-                type="checkbox"
-                checked={this.state.isChecked}
-                onChange={e => this.handleCheck(e)}
-                value="planets/?search="
-              />
-            </label>
-          </div>
-          <div className="checkbox">
-            <label htmlFor="starshipBox">
-              Starships
-              <input
-                className="checkboxes"
-                id="starshipBox"
-                type="checkbox"
-                checked={this.state.isChecked}
-                onChange={e => this.handleCheck(e)}
-                value="starships/?search="
-              />
-            </label>
-          </div>
-          <div className="checkbox">
-            <label htmlFor="peopleBox">
-              People
-              <input
-                className="checkboxes"
-                id="peopleBox"
-                type="checkbox"
-                checked={this.state.isChecked}
-                onChange={e => this.handleCheck(e)}
-                value="people/?search="
-              />
-            </label>
-          </div>
+          {this.createBoxes(this.labels)}
         </div>
 
-        {/* These are options that the user can make in order to sort and filter the results.
-        The idea is to make it so that changing the value will automatically perform a new
-        request for the result set. */}
         <div className="sort_filters">
-          <form>
-            {/* For sorting the returned objects based on user choice */}
-            <select className="sorting">
-              <option value="lexicographical">Alphabetically</option>
-              <option value="by_added_date">By added date</option>
-              <option value="by_added_date_rev">By added date reversed</option>
-            </select>
-          </form>
+          {' '}
+          {/* These are options that the user can make in order to sort and filter the results.
+          The idea is to make it so that changing the value auto-perform a new request */}
+          {/* For sorting the returned objects based on user choice */}
+          {/* eslint-disable-next-line jsx-a11y/anchor-is-valid, until href added */}
+          <a href="#" className="sort_button">Choose sort method</a>
+          <ul className="sorting">
+            <li className="sort_optn" href="#" value="lexicographical">Alphabetically</li>
+            <li className="sort_optn" href="#" value="by_added_date">By added date</li>
+            <li className="sort_optn" href="#" value="by_added_date_rev">By added date reversed</li>
+          </ul>
         </div>
-      </React.Fragment>
+      </div>
     );
   }
 }
