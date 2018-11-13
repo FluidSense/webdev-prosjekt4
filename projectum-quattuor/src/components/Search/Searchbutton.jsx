@@ -14,7 +14,7 @@ export default class Searchbutton extends Component {
     };
   }
 
-  /* Funcionality to handle form and state of form */
+  /* Functionality to handle form and state of form */
   /* Changes state of value whenever the form is changed, in realtime. */
   handleChange(event) {
     this.setState({ searchValue: event.target.value });
