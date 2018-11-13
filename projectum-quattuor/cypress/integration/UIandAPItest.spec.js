@@ -6,9 +6,6 @@ describe("Tests for UI elements. Checks if things are reachable, and if filters 
              .type('Luke, I am your father')
              .should('have.value', 'Luke, I am your father')
     })
-   
-
-
     it('Searches for Skywalker, check is result expands on click expanding', function() {
         cy.get('.check_label:nth-child(3)')
             .click()
@@ -19,11 +16,10 @@ describe("Tests for UI elements. Checks if things are reachable, and if filters 
             cy.get('.result_set')
                 .click({multiple : true})
                 cy.contains('height: 172')
-
 })
 })
 
-describe("Checks if the api is available, then does a testsearch for Skywalker.", function(){
+describe("Testsearch for Skywalker through our current implementation of serach, then checks if the API is available and checks if the result from both searches yield the same result. ", function(){
    it('Sets a filter and searches for characters with the name "Skywalker", then checks if the document body contains the desired results.', function() {
     cy.get('.check_label:nth-child(3)')
         .click()
