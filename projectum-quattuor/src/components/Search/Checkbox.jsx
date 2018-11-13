@@ -7,7 +7,6 @@ const Checkbox = (props) => {
     <label htmlFor={props.key} className="check_label">
       {label}
       <input
-        onClick={toggleClass}
         type="checkbox"
         id={props.key}
         checked={props.isChecked}

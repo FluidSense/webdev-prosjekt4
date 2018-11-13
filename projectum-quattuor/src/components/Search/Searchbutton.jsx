@@ -11,8 +11,6 @@ export default class Searchbutton extends Component {
     this.state = {
       endpointValue: '',
       searchValue: '',
-      isChecked: false,
-      active: '',
     };
   }
 
@@ -22,14 +20,13 @@ export default class Searchbutton extends Component {
     this.setState({ searchValue: event.target.value });
   }
 
-  /* Prevents default formsubmit for now, and logs the state that is saved. */
+  /* Prevents default formsubmit */
   handleSubmit(event) {
     event.preventDefault();
   }
 
   /* Handles state of checkboxes and sets state as to prepend necessary filter for request */
   handleCheck(event) {
-    this.setState({ isChecked: event.target.isChecked });
     this.setState({ endpointValue: event.target.value });
     if (this.state.endpointValue === event.target.value) {
       this.setState({ endpointValue: '' });
