@@ -36,7 +36,7 @@ export class ResultSet extends React.Component {
     render() {
         const { resultSetJson, error, loading } = this.props;
         const { loadedIndex, maxLoadObjects } = this.state;
-        const displayResults = resultSetJson.slice(0, maxLoadObjects * loadedIndex);
+        
 
         if(error){
             return <p className='error_message'>{error}</p>
@@ -46,10 +46,12 @@ export class ResultSet extends React.Component {
             return <p className='loading_message'>Loading...</p>
         }
 
-        if(resultSetJson.length < 1){
+        if(resultSetJson === undefined || resultSetJson.length < 1){
             return <p>No results retrieved.</p>
         }
 
+        const displayResults = resultSetJson.slice(0, maxLoadObjects * loadedIndex);
+        
         return (
 
             <div className="result_set" onScroll={this.handleScroll}>
