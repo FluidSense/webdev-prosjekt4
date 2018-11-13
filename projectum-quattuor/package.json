@@ -27,11 +27,11 @@
     "e2e": "cypress run",
     "e2e:verify": "cypress verify",
     "cypress:open": "cypress open",
-    "lint": "eslint src/",
-    "lint:fix": "eslint src/ --fix"
+    "lint": "eslint src/ --ext .js,.jsx",
+    "lint:fix": "eslint src/ --ext .js,.jsx --fix"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "airbnb"
   },
   "browserslist": [
     ">0.2%",
