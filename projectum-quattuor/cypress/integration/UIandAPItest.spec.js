@@ -19,7 +19,7 @@ describe("Tests for UI elements. Checks if things are reachable, and if filters 
 })
 })
 
-describe("Testsearch for Skywalker through our current implementation of serach, then checks if the API is available and checks if the result from both searches yield the same result. ", function(){
+describe("Testsearch for Skywalker through our current implementation of search, then checks if the API is available and checks if the result from both searches yield the same result. ", function(){
    it('Sets a filter and searches for characters with the name "Skywalker", then checks if the document body contains the desired results.', function() {
     cy.get('.check_label:nth-child(3)')
         .click()
