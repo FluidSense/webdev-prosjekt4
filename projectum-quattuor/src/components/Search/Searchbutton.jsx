@@ -2,6 +2,8 @@ import React,{Component}  from 'react'
 import Checkbox from './Checkbox'
 
 const APIQuery = 'https://swapi.co/api/';
+const labels =["Planets","Starships","People","Species","Films","Vehicles"];
+
 
 export class Searchbutton extends Component {
     constructor(props) {
@@ -10,6 +12,7 @@ export class Searchbutton extends Component {
             endpointValue: '',
             searchValue: '',
             isChecked: false,
+            active: '',
         };
     }
     
@@ -27,11 +30,29 @@ export class Searchbutton extends Component {
     /* Handles state of checkboxes and sets state as to prepend necessary filter for request */
     handleCheck = (event) => {
         this.setState({isChecked: event.target.isChecked});
-        this.setState({endpointValue: event.target.value})
+        this.setState({endpointValue: event.target.value});
         if(this.state.endpointValue === event.target.value){
             this.setState({value: ''})
         }
     }
+
+    /* Creates the checkboxes dynamically from the list of labels. */
+
+    createBoxes() {
+        const checkboxArray = []
+        const labellength = labels.length;
+        for(var i = 0; i < labellength; i++){
+           checkboxArray.push(<Checkbox
+                key={[i]}
+                className="madeBoxes"
+                endpointValue={this.state.endpointValue}
+                handleChange={this.handleChange}
+                handleCheck={this.handleCheck}
+                label={labels[i]}
+                />)
+    }
+    return checkboxArray
+}
 
     render() {
         return (
@@ -48,48 +69,8 @@ export class Searchbutton extends Component {
            
         </div>
     
-         <div className="checkboxes">   
-         <Checkbox 
-         endpointValue={this.state.endpointValue}
-         handleChange={this.handleChange}
-         handleCheck={this.handleCheck}
-         label="Planets"
-         />
-         <Checkbox 
-         endpointValue={this.state.endpointValue}
-         handleChange={this.handleChange}
-         handleCheck={this.handleCheck}
-         label="Starships"
-         />
-
-        <Checkbox 
-         endpointValue={this.state.endpointValue}
-         handleChange={this.handleChange}
-         handleCheck={this.handleCheck}
-         label="People"
-         />
-
-        <Checkbox 
-         endpointValue={this.state.endpointValue}
-         handleChange={this.handleChange}
-         handleCheck={this.handleCheck}
-         label="Species"
-         />
-         <Checkbox 
-         endpointValue={this.state.endpointValue}
-         handleChange={this.handleChange}
-         handleCheck={this.handleCheck}
-         label="Films"
-         />
-
-        <Checkbox 
-         endpointValue={this.state.endpointValue}
-         handleChange={this.handleChange}
-         handleCheck={this.handleCheck}
-         label="Vehicles"
-         />
-
-           
+        <div className="checkboxes">  
+            {this.createBoxes(this.labels)}
         </div>
 
         <div className="sort_filters"> {/*These are options that the user can make in order to sort and filter the results. The idea is to make it so that changing the value will automatically perform a new request for the result set.*/}

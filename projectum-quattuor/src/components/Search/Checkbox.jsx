@@ -8,8 +8,9 @@ render(){
     return(
         <label className="check_label">{this.props.label}
         <input
+            onclick={this.toggleClass} 
             type="checkbox"
-            id={this.props.label}
+            id={this.props.key}
             checked={this.props.isChecked} 
             onChange={this.props.handleCheck}
             value={labelname.toLowerCase() + "/?search="}
@@ -18,4 +19,4 @@ render(){
     )
 }
 }
-export default Checkbox;
+    export default Checkbox;
