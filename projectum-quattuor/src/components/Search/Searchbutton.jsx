@@ -2,7 +2,7 @@ import React,{Component}  from 'react'
 import Checkbox from './Checkbox'
 
 const APIQuery = 'https://swapi.co/api/';
-const labels =["Planets","Starships","People","Species","Films","Vehicles"];
+const searchLabels =["Planets","Starships","People","Species","Films","Vehicles"];
 
 
 export class Searchbutton extends Component {
@@ -32,7 +32,7 @@ export class Searchbutton extends Component {
         this.setState({isChecked: event.target.isChecked});
         this.setState({endpointValue: event.target.value});
         if(this.state.endpointValue === event.target.value){
-            this.setState({value: ''})
+            this.setState({endpointValue: ''})
         }
     }
 
@@ -40,15 +40,15 @@ export class Searchbutton extends Component {
 
     createBoxes() {
         const checkboxArray = []
-        const labellength = labels.length;
-        for(var i = 0; i < labellength; i++){
+        const searchLabelsLength = searchLabels.length;
+        for(var i = 0; i < searchLabelsLength; i++){
            checkboxArray.push(<Checkbox
-                key={[i]}
+                key={i}
                 className="madeBoxes"
                 endpointValue={this.state.endpointValue}
                 handleChange={this.handleChange}
                 handleCheck={this.handleCheck}
-                label={labels[i]}
+                label={searchLabels[i]}
                 />)
     }
     return checkboxArray
