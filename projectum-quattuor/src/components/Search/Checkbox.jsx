@@ -2,7 +2,7 @@ import React from 'react';
 
 const Checkbox = (props) => {
   const { label, subKey } = props;
-  const sub1 = subKey + '1';
+  const sub1 = `${subKey}1`;
 
   return (
     <label htmlFor={sub1} className="check_label">
