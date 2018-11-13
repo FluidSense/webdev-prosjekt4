@@ -17,6 +17,23 @@ describe("Tests for UI elements. Checks if things are reachable, and if filters 
                 .click({multiple : true})
                 cy.contains('height: 172')
 })
+it('Checks if it is possible to remove filters by placing a filter, searching and confirming correct info, removing said info and confirming the removal of filter.', function() {
+    cy.get('.check_label:nth-child(1)')
+        .click()
+    cy.get('.search_bar')
+        .clear()
+        .type('Tatooine {enter}')
+        cy.wait(1000)
+        cy.get('.result_list')
+            .click()
+            cy.contains('https://swapi.co/api/planets/1/')
+    cy.get('.check_label:nth-child(1)')
+        .click()
+        cy.get('.search_bar')
+        .type('{enter}')
+        cy.wait(1000)
+            cy.contains('No results')
+})
 })
 
 describe("Testsearch for Skywalker through our current implementation of search, then checks if the API is available and checks if the result from both searches yield the same result. ", function(){
@@ -40,7 +57,8 @@ describe("Testsearch for Skywalker through our current implementation of search,
       })  
     })
    }) 
-   it('Checks if an erroneous search displays nothing.', function() {
+   
+  it('Checks if an erroneous search displays nothing.', function() {
     cy.get('.check_label:nth-child(1)')
     .click()
     cy.get('.search_bar')
