@@ -3,7 +3,7 @@ import React,{Component}  from 'react'
 class Checkbox extends Component {
 
 render(){
-    const labelname = this.props.label
+    const { label } = this.props;
     
     return(
         <label className="check_label">{this.props.label}
@@ -13,10 +13,10 @@ render(){
             id={this.props.key}
             checked={this.props.isChecked} 
             onChange={this.props.handleCheck}
-            value={labelname.toLowerCase() + "/?search="}
+            value={label.toLowerCase() + "/?search="}
         />
-    </label>
-    )
-}
+         </label>
+        )
+    }
 }
     export default Checkbox;
