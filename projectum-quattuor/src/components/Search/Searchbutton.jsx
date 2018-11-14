@@ -9,8 +9,9 @@ export default class Searchbutton extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      endpointValue: '',
+      endpointValue: 'planets/?search=',
       searchValue: '',
+      selectedItem: 'Planets',
     };
   }
 
@@ -27,11 +28,7 @@ export default class Searchbutton extends Component {
 
   /* Handles state of checkboxes and sets state as to prepend necessary filter for request */
   handleCheck(event, item) {
-    if (this.state.endpointValue === event.target.value) {
-      this.setState({ endpointValue: '', selectedItem: '' });
-    } else {
-      this.setState({ endpointValue: event.target.value, selectedItem: item });
-    }
+    this.setState({ endpointValue: event.target.value, selectedItem: item });
   }
 
   /* Creates the checkboxes dynamically from the list of labels. */
