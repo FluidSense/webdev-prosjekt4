@@ -1,14 +1,15 @@
 import React from 'react';
 
 const Checkbox = (props) => {
-  const { label } = props;
+  const { label, subKey } = props;
+  const sub1 = `${subKey}1`;
 
   return (
-    <label htmlFor={props.key} className="check_label">
+    <label htmlFor={sub1} className="check_label">
       {label}
       <input
         type="checkbox"
-        id={props.key}
+        id={sub1}
         checked={props.isChecked}
         onChange={props.handleCheck}
         value={`${label.toLowerCase()}/?search=`}

@@ -41,6 +41,7 @@ export default class Searchbutton extends Component {
       <Checkbox
         key={item}
         className="madeBoxes"
+        subKey={item}
         endpointValue={this.state.endpointValue}
         handleChange={e => this.handleChange(e)}
         handleCheck={e => this.handleCheck(e)}
