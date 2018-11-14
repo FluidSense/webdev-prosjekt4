@@ -12,7 +12,7 @@ const Checkbox = (props) => {
         id={sub1}
         checked={props.isChecked}
         onChange={props.handleCheck}
-        value={`${label.toLowerCase()}/?search=`}
+        value={`${label.toLowerCase()}`}
       />
     </label>
   );

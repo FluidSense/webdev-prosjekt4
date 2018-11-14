@@ -39,7 +39,12 @@ export default class ResultSet extends React.Component {
   }
 
   render() {
-    const { resultSetJson, error, loading } = this.props;
+    const {
+      resultSetJson,
+      error,
+      loading,
+      searchHistory,
+    } = this.props;
     const { loadedIndex, maxLoadObjects } = this.state;
 
     if (error) {

@@ -1,12 +1,15 @@
-/* Data fetching helper functions */
-export const updateResultSet = param => ({ type: 'FETCHED_RESULTS_RECEIVED', payload: param });
-export const updateErrorState = param => ({ type: 'FETCH_ERROR_OCCURRED', payload: param });
-export const updateLoadingState = (loading, loadingUrl) => ({ type: 'FETCH_LOADING_IN_PROGRESS', payload: { loading, loadingUrl } });
+/* Data fetching for content helper functions */
+export const updateSearchContentSet = param => ({ type: 'FETCHED_RESULTS_RECEIVED', payload: param });
+export const updateSearchContentErrorState = param => ({ type: 'FETCH_CONTENT_ERROR_OCCURRED', payload: param });
+export const updateSearchContentLoadingState = (loading, loadingUrl) => ({ type: 'FETCH_CONTENT_LOADING_IN_PROGRESS', payload: { loading, loadingUrl } });
+
+/* Data fetching for search history updater */
+export const updateSearchHistorySet = param => ({ type: 'FETCHED_HISTORY_RECEIVED', payload: param });
 
 // Fetches data from API
-export const fetchDataThunk = fetchUrl => (dispatch) => {
+export const fetchSearchData = fetchUrl => (dispatch) => {
   // Updates loading state and informs reducer which url is being fetched
-  dispatch(updateLoadingState(true, fetchUrl));
+  dispatch(updateSearchContentLoadingState(true, fetchUrl));
 
   fetch(fetchUrl)
     .then((response) => {
@@ -15,12 +18,29 @@ export const fetchDataThunk = fetchUrl => (dispatch) => {
       }
       return false;
     }, (error) => { // Pushes error
-      dispatch(updateErrorState(error.message));
-      dispatch(updateLoadingState(false, fetchUrl));
+      dispatch(updateSearchContentErrorState(error.message));
+      dispatch(updateSearchContentLoadingState(false, fetchUrl));
     })
     .then((data) => {
       if (data !== undefined) { // Prevents JSON data to be updated if data does not exist
-        dispatch(updateResultSet(data.results));
+        dispatch(updateSearchContentSet(data));
+      }
+    });
+};
+
+export const fetchSearchHistory = fetchUrl => (dispatch) => {
+  fetch(fetchUrl)
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      }
+      return false;
+    }, (error) => { // Pushes error
+      console.error(error);
+    })
+    .then((data) => {
+      if (data !== undefined) { // Prevents JSON data to be updated if data does not exist
+        dispatch(updateSearchHistorySet(data));
       }
     });
 };
