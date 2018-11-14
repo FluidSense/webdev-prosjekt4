@@ -14,13 +14,13 @@ export default class Searchbutton extends Component {
     };
   }
 
-  /* Functionality to handle form and state of form */
+  /* Funcionality to handle form and state of form */
   /* Changes state of value whenever the form is changed, in realtime. */
   handleChange(event) {
     this.setState({ searchValue: event.target.value });
   }
 
-  /* Prevents default formsubmit for now, and logs the state that is saved. */
+  /* Prevents default formsubmit */
   handleSubmit(event) {
     event.preventDefault();
   }
