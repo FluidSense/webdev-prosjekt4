@@ -35,8 +35,6 @@ export const fetchSearchHistory = fetchUrl => (dispatch) => {
         return response.json();
       }
       return false;
-    }, (error) => { // Pushes error
-      console.error(error);
     })
     .then((data) => {
       if (data !== undefined) { // Prevents JSON data to be updated if data does not exist

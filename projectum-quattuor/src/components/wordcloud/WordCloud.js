@@ -1,12 +1,14 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { getRemoteResource } from '../../state/wordcloud/actions';
-import { searchedRecentlyWords } from '../../state/wordcloud/selectors';
+import { searchHistorySelector } from '../../state/search/selectors';
+import { fetchSearchHistory } from '../../state/search/actions';
 import Lightsabers from './Lightsaber';
+
+const APIQuery = 'http://localhost:8080/api/search';
 
 class _WordCloud extends React.Component {
   componentDidMount() {
-    this.props.getWordList();
+    this.props.searchForHistoryApi(APIQuery);
   }
 
   render() {
@@ -14,12 +16,14 @@ class _WordCloud extends React.Component {
   }
 }
 
+/* Gets desired props from the state store */
 const mapStateToProps = state => ({
-  words: searchedRecentlyWords(state),
+  words: searchHistorySelector(state),
 });
 
+/* Callable actions as props */
 const mapDispatchToProps = dispatch => ({
-  getWordList: URL => dispatch(getRemoteResource(URL)),
+  searchForHistoryApi: fetchUrl => dispatch(fetchSearchHistory(fetchUrl)),
 });
 
 const WordCloud = connect(

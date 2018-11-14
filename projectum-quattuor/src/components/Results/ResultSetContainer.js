@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {
-  resultSetSelector, errorSelector, loadingSelector, searchHistorySelector,
+  resultSetSelector, errorSelector, loadingSelector,
 } from '../../state/search/selectors';
 import ResultSet from './ResultSet';
 
@@ -13,7 +13,6 @@ const mapStateToProps = state => ({
   resultSetJson: resultSetSelector(state),
   error: errorSelector(state),
   loading: loadingSelector(state),
-  searchHistory: searchHistorySelector(state),
 });
 
 /* Connects the container to the store */

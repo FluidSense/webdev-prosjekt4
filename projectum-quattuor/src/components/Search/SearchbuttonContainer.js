@@ -4,7 +4,7 @@ import { fetchSearchData, fetchSearchHistory } from '../../state/search/actions'
 import Searchbutton from './Searchbutton';
 
 
-// eslint-disable-next-line no-underscore-dangle
+// eslint-disable-next-line
 const _SearchbuttonContainer = props => <Searchbutton searchWithApi={props.searchWithApi} searchForHistoryApi={props.searchForHistoryApi} />;
 
 /* Callable actions as props */

@@ -3,6 +3,7 @@ const initialState = {
   resultSetJson: [],
   error: '',
   loading: false,
+  searchHistory: [],
 };
 
 const searchReducer = (

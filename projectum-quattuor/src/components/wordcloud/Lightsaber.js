@@ -1,7 +1,9 @@
 import React from 'react';
 
 const Lightsabers = (props) => {
-  const words = [...props.words].splice(0, 10);
+  const queryNames = props.words.map(object => object.search_string);
+
+  const words = queryNames.splice(0, 10);
   const wordsLeft = words.splice(0, words.length / 2);
   const wordsRight = words;
   wordsLeft.sort((a, b) => a.length < b.length);

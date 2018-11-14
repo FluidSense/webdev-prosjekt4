@@ -54,6 +54,10 @@ export default class ResultSet extends React.Component {
       return <p className="loading_message">Loading...</p>;
     }
 
+    if (Array.isArray(resultSetJson) === false) {
+      return <p>Please choose a type option</p>;
+    }
+
     if (resultSetJson === undefined || resultSetJson.length < 1) {
       return <p>No results retrieved.</p>;
     }
