@@ -39,7 +39,11 @@ export default class ResultSet extends React.Component {
   }
 
   render() {
-    const { resultSetJson, error, loading } = this.props;
+    const {
+      resultSetJson,
+      error,
+      loading,
+    } = this.props;
     const { loadedIndex, maxLoadObjects } = this.state;
 
     if (error) {
@@ -48,6 +52,10 @@ export default class ResultSet extends React.Component {
 
     if (loading) {
       return <p className="loading_message">Loading...</p>;
+    }
+
+    if (!Array.isArray(resultSetJson)) {
+      return <p>Please choose a type option</p>;
     }
 
     if (resultSetJson === undefined || resultSetJson.length < 1) {

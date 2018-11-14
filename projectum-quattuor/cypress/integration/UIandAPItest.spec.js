@@ -26,7 +26,7 @@ it('Checks if it is possible to remove filters by placing a filter, searching an
         cy.wait(3000)
         cy.get('.result_list')
             .click()
-            cy.contains('https://swapi.co/api/planets/1/')
+    cy.contains('id: 1')
   
 })
 })
@@ -43,7 +43,7 @@ describe("Testsearch for Skywalker through our current implementation of search,
         cy.contains('Anakin Skywalker')
         cy.contains('Shmi Skywalker')
     it('Checks directly from the API if the same search yields the same response.', function() {
-        cy.request('https://swapi.co/api/people/?search=Skywalker')
+        cy.request('http://it2810-06.idi.ntnu.no/api/api/people/?search=Skywalker')
         .then((response) => {
             expect(response.body).to.have.property('count', 3)
             expect(response.body.results[0]).to.have.property('name', 'Luke Skywalker')

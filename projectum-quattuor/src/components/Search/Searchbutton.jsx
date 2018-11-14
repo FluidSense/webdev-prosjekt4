@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Checkbox from './Checkbox';
 
-const APIQuery = 'https://swapi.co/api/';
 const searchLabels = ['Planets', 'Starships', 'People', 'Species', 'Films', 'Vehicles'];
+const APIQuery = 'http://it2810-06.idi.ntnu.no/api/api/';
 
 
 export default class Searchbutton extends Component {
@@ -48,6 +48,11 @@ export default class Searchbutton extends Component {
     return checkboxArray;
   }
 
+  makeNewSearch(fetchContentUrl, searchQuery) {
+    this.props.searchWithApi(`${fetchContentUrl}?search=${searchQuery}`); // Request content from search
+    this.props.searchForHistoryApi(`${APIQuery}search`); // Request search history
+  }
+
   render() {
     return (
       <div className="search_content">
@@ -57,7 +62,7 @@ export default class Searchbutton extends Component {
               <input type="text" id="searchbar" className="search_bar" value={this.state.searchValue} onChange={e => this.handleChange(e)} />
             </label>
             <div>
-              <input type="submit" className="search_button" value="May the Force be with you." onClick={() => this.props.searchWithApi(APIQuery + this.state.endpointValue + this.state.searchValue)} />
+              <input type="submit" className="search_button" value="May the Force be with you." onClick={() => this.makeNewSearch(APIQuery + this.state.endpointValue, this.state.searchValue)} />
             </div>
           </form>
 
