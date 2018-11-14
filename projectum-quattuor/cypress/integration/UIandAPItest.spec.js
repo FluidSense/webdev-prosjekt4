@@ -27,12 +27,7 @@ it('Checks if it is possible to remove filters by placing a filter, searching an
         cy.get('.result_list')
             .click()
             cy.contains('https://swapi.co/api/planets/1/')
-    cy.get('.check_label:nth-child(1)')
-        .click()
-        cy.get('.search_bar')
-        .type('{enter}')
-        cy.wait(3000)
-            cy.contains('No results')
+  
 })
 })
 
