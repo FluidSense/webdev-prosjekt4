@@ -133,6 +133,18 @@ input[type="checkbox"] {
   cursor: pointer;
 }
 
+.checked_label {
+  justify-content: center;
+  padding: 2em;
+  flex-grow: 1;
+  color: rgb(231, 231, 231);
+    background-color: rgb(143, 124, 15);
+    -webkit-transition: background-color 0.5s ease-out;
+    -moz-transition: background-color 0.5s ease-out;
+    -o-transition: background-color 0.5s ease-out;
+    transition: background-color 0.5s ease-out;
+}
+
 .sort_filters{
   width: 20vw;
   margin: auto;

@@ -16,8 +16,8 @@ export default class Searchbutton extends Component {
 
   /* Funcionality to handle form and state of form */
   /* Changes state of value whenever the form is changed, in realtime. */
-  handleChange(event) {
-    this.setState({ searchValue: event.target.value });
+  handleChange(event, item) {
+    this.setState({ searchValue: event.target.value, selectedItem: item });
   }
 
   /* Prevents default formsubmit */
@@ -26,10 +26,11 @@ export default class Searchbutton extends Component {
   }
 
   /* Handles state of checkboxes and sets state as to prepend necessary filter for request */
-  handleCheck(event) {
-    this.setState({ endpointValue: event.target.value });
+  handleCheck(event, item) {
     if (this.state.endpointValue === event.target.value) {
-      this.setState({ endpointValue: '' });
+      this.setState({ endpointValue: '', selectedItem: '' });
+    } else {
+      this.setState({ endpointValue: event.target.value, selectedItem: item });
     }
   }
 
@@ -42,9 +43,8 @@ export default class Searchbutton extends Component {
         key={item}
         className="madeBoxes"
         subKey={item}
-        endpointValue={this.state.endpointValue}
-        handleChange={e => this.handleChange(e)}
-        handleCheck={e => this.handleCheck(e)}
+        checked={item === this.state.selectedItem}
+        handleCheck={e => this.handleCheck(e, item)}
         label={item}
       />,
     ));
