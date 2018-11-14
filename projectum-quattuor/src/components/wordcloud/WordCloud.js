@@ -4,7 +4,7 @@ import { searchHistorySelector } from '../../state/search/selectors';
 import { fetchSearchHistory } from '../../state/search/actions';
 import Lightsabers from './Lightsaber';
 
-const APIQuery = 'http://localhost:8080/api/search';
+const APIQuery = 'http://it2810-06.idi.ntnu.no/api/api/search';
 
 class _WordCloud extends React.Component {
   componentDidMount() {

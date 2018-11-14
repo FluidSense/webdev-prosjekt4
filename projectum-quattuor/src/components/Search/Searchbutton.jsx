@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Checkbox from './Checkbox';
 
 const searchLabels = ['Planets', 'Starships', 'People', 'Species', 'Films', 'Vehicles'];
-const APIQuery = 'http://localhost:8080/api/';
+const APIQuery = 'http://it2810-06.idi.ntnu.no/api/api/';
 
 
 export default class Searchbutton extends Component {
