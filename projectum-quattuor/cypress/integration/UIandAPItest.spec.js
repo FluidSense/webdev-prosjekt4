@@ -26,7 +26,7 @@ it('Checks if it is possible to remove filters by placing a filter, searching an
         cy.wait(3000)
         cy.get('.result_list')
             .click()
-    cy.contains('id: 1')
+    cy.contains('name: Tatooine')
   
 })
 })
