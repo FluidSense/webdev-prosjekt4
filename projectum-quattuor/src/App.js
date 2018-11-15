@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 
 import WordCloud from './components/wordcloud/WordCloud';
-import SearchbuttonContainer from './components/Search/SearchbuttonContainer';
+import SearchContainer from './components/Search/SearchContainer';
 import ResultSetContainer from './components/Results/ResultSetContainer';
 
 const App = () => (
@@ -13,7 +13,7 @@ const App = () => (
       <WordCloud />
 
       {/* Search bar */}
-      <SearchbuttonContainer />
+      <SearchContainer />
 
       {/* Result set */}
       <div className="result_wrapper">
