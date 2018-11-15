@@ -47,21 +47,33 @@ export default class ResultObject extends React.Component {
       });
   }
 
+  // Finds a proper name for each type of object, due to non-conforming backend.
+  findName(object) {
+    if (object.title) {
+      return object.title;
+    }
+    if (object.Transport) {
+      return object.Transport.name;
+    }
+    return object.name;
+  }
+
 
   render() {
     const { information } = this.state;
+    const displayName = this.findName(information);
 
     /* Toggles expansion on/off */
     if (!this.state.expanded) {
       /* Line below is disabled at the moment as each list object does not need keyboard listener */
       /* eslint-disable-next-line */
-      return <p onClick={() => this.handleClick()}>{information.name}</p>;
+      return <p onClick={() => this.handleClick()}>{displayName}</p>;
     }
 
     return (
       <div key={information.url}>
         {/* eslint-disable-next-line */}
-        <div key="0" onClick={() => this.handleClick()} role="button">{information.name}</div>
+        <div key="0" onClick={() => this.handleClick()} role="button">{displayName}</div>
         <ul key="1" className="result_list_expanded">
           {this.parseObject(information)}
         </ul>
