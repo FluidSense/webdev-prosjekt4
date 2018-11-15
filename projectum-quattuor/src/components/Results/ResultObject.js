@@ -14,6 +14,39 @@ export default class ResultObject extends React.Component {
     this.state.expanded ? this.setState({ expanded: false }) : this.setState({ expanded: true });
   }
 
+  // Parses an incoming object recursively, so objects containing objects are displayed properly
+  parseObject(object) {
+    return Object.keys(object)/* Filters out unneccessary tags */
+      .filter(attribute => attribute !== 'id')
+      .map((attribute) => {
+        if (typeof object[attribute] !== 'string' && typeof object[attribute] !== 'number' && object[attribute] !== null) {
+          return (
+            <li key={attribute}>
+              <p>
+                {attribute}
+                :
+              </p>
+              <ul className="result_list_expanded">
+                {this.parseObject(object[attribute])}
+              </ul>
+            </li>
+
+          );
+        }
+
+        return (
+          <li key={attribute}>
+            <p>
+              {attribute}
+              :
+              {' '}
+              {object[attribute]}
+            </p>
+          </li>
+        );
+      });
+  }
+
 
   render() {
     const { information } = this.state;
@@ -30,18 +63,7 @@ export default class ResultObject extends React.Component {
         {/* eslint-disable-next-line */}
         <div key="0" onClick={() => this.handleClick()} role="button">{information.name}</div>
         <ul key="1" className="result_list_expanded">
-          {Object.keys(information)/* Filters out unneccessary tags */
-            .filter(attribute => attribute !== 'name' && attribute !== 'created' && attribute !== 'edited')
-            .map(attribute => (
-              <li key={attribute}>
-                <p>
-                  {attribute}
-:
-                  {' '}
-                  {information[attribute]}
-                </p>
-              </li>
-            ))}
+          {this.parseObject(information)}
         </ul>
       </div>
     );
