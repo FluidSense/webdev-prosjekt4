@@ -11,6 +11,7 @@ export const nameTranslate = {
   Planets: 'name',
   Vehicles: 'name',
   Starships: 'name',
+  Species: 'name',
 };
 
 
