@@ -91,7 +91,7 @@ export default class Searchbutton extends Component {
           {this.createOptions()}
         </div>
 
-        <div className="checkboxes">
+        <div className="sortboxes">
           {this.createSort()}
         </div>
       </div>

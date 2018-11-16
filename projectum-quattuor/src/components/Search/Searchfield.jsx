@@ -16,7 +16,7 @@ class Searchfield extends React.Component {
     return (
       <div className="search_wrapper">
         <label htmlFor="searchBar">
-          <input type="text" id="searchbar" className="search_bar" value={this.state.searchValue} onChange={e => this.handleChange(e)} />
+          <input type="text" id="searchbar" className="search_bar" value={this.state.searchValue} onChange={e => this.handleChange(e)} onKeyPress={e => (e.key === 'Enter' ? this.props.updateSearchValue(this.state.searchValue) : false)} />
         </label>
         <div>
           <input type="submit" className="search_button" value="May the Force be with you." onClick={() => this.props.updateSearchValue(this.state.searchValue)} />
