@@ -15,7 +15,7 @@ describe("Tests for UI elements. Checks if things are reachable, and if filters 
             cy.wait(3000)
             cy.get('.result_set')
                 .click({multiple : true})
-                cy.contains('height: 172')
+                cy.contains('Height: 172')
 })
 it('Checks if it is possible to remove filters by placing a filter, searching and confirming correct info, removing said info and confirming the removal of filter.', function() {
     cy.get('.check_label:nth-child(1)')
@@ -26,7 +26,7 @@ it('Checks if it is possible to remove filters by placing a filter, searching an
         cy.wait(3000)
         cy.get('.result_list')
             .click()
-    cy.contains('name: Tatooine')
+    cy.contains('Name: Tatooine')
   
 })
 })
