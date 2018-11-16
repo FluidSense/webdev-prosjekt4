@@ -9,8 +9,8 @@ export const nameTranslate = {
   Films: 'title',
   People: 'name',
   Planets: 'name',
-  Vehicles: 'Transport.name',
-  Starships: 'Transport.name',
+  Vehicles: 'name',
+  Starships: 'name',
 };
 
 
