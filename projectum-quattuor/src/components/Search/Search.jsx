@@ -3,7 +3,7 @@ import Checkbox from './Checkbox';
 import Searchfield from './Searchfield';
 
 const searchLabels = ['Planets', 'Starships', 'People', 'Species', 'Films', 'Vehicles'];
-const APIQuery = 'http://it2810-06.idi.ntnu.no/api/api/';
+export const APIQuery = 'http://it2810-06.idi.ntnu.no/api/api/';
 const sortLabels = [['Name', 'ASC'], ['Name', 'DESC'], ['ID', 'ASC'], ['ID', 'DESC']];
 export const nameTranslate = {
   Films: 'title',
