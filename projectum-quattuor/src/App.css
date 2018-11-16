@@ -95,7 +95,7 @@ button{
   flex-direction: column;
 }
 
-.checkboxes {
+.checkboxes, .sortboxes {
   text-decoration: none;
   display: inline-flex;
   flex-wrap: wrap;

@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchSearchData, fetchSearchHistory } from '../../state/search/actions';
-import Searchbutton from './Searchbutton';
+import Search from './Search';
 
 
 // eslint-disable-next-line no-underscore-dangle
-const _SearchbuttonContainer = props => (
-  <Searchbutton
+const _SearchContainer = props => (
+  <Search
     searchWithApi={props.searchWithApi}
     searchForHistoryApi={props.searchForHistoryApi}
   />);
@@ -18,9 +18,9 @@ const mapDispatchToProps = dispatch => ({
 });
 
 /* Connects the container to the store */
-const SearchbuttonContainer = connect(
+const SearchContainer = connect(
   null,
   mapDispatchToProps,
-)(_SearchbuttonContainer);
+)(_SearchContainer);
 
-export default SearchbuttonContainer;
+export default SearchContainer;

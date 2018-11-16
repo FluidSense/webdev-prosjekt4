@@ -4,7 +4,8 @@ import {
 import thunkMiddelware from 'redux-thunk';
 import searchReducer from './search/reducer';
 
-const reducers = combineReducers({
+
+export const reducers = combineReducers({
   search: searchReducer,
 });
 
