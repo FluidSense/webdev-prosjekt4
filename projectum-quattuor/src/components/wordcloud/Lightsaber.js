@@ -8,7 +8,7 @@ const Lightsabers = (props) => {
   words.sort((a, b) => a.length < b.length);
   const wordsLeft = [];
   const wordsRight = [];
-  words.map((word, i) => (i % 2 === 0 ? wordsLeft.push(word) : wordsRight.push(word)));
+  words.filter(word => word !== ' ' && word !== '').map((word, i) => (i % 2 === 0 ? wordsLeft.push(word) : wordsRight.push(word)));
 
 
   const shaftStyle = {
@@ -29,7 +29,7 @@ const Lightsabers = (props) => {
   const saberRight = [rightShaft, ...saber(wordsRight, 'red')];
   const lengthOfSaber = wordsLeft.join('').length + wordsLeft.length;
 
-  return (
+  return (saberLeft.length > 1 && saberRight.length > 1 &&
     <div style={{
       minHeight: `${lengthOfSaber}em`, maxHeight: '500px', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative',
     }}
