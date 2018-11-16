@@ -3,12 +3,11 @@ import { connect } from 'react-redux';
 import { searchHistorySelector } from '../../state/search/selectors';
 import { fetchSearchHistory } from '../../state/search/actions';
 import Lightsabers from './Lightsaber';
+import { APIQuery } from '../Search/Search';
 
-const APIQuery = 'http://it2810-06.idi.ntnu.no/api/api/search';
-
-class _WordCloud extends React.Component {
+export class _WordCloud extends React.Component {
   componentDidMount() {
-    this.props.searchForHistoryApi(APIQuery);
+    this.props.searchForHistoryApi(`${APIQuery}search`);
   }
 
   render() {

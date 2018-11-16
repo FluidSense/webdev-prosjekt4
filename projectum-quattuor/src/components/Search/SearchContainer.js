@@ -5,7 +5,7 @@ import Search from './Search';
 
 
 // eslint-disable-next-line no-underscore-dangle
-const _SearchContainer = props => (
+export const _SearchContainer = props => (
   <Search
     searchWithApi={props.searchWithApi}
     searchForHistoryApi={props.searchForHistoryApi}

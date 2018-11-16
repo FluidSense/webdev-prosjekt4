@@ -22,7 +22,7 @@ const Lightsabers = (props) => {
   const rightShaft = <p key="firstWordRightShaft" style={shaftStyle}>{wordsRight.pop()}</p>;
 
   const saber = (wordList, color, glow = color) => (
-    [wordList.map((word, i) => <p key={`${word}+${i}`} style={saberStyle(color, glow)}>{word}</p>)]
+    wordList.map((word, i) => <p key={`${word}+${i}`} style={saberStyle(color, glow)}>{word}</p>)
   );
 
   const saberLeft = [leftShaft, ...saber(wordsLeft, 'LightSkyBlue', 'Cyan')];
