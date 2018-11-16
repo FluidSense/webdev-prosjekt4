@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search actions should dispatch the correct action 1`] = `
+Array [
+  Object {
+    "payload": Object {
+      "loading": true,
+      "loadingUrl": "url",
+    },
+    "type": "FETCH_CONTENT_LOADING_IN_PROGRESS",
+  },
+]
+`;

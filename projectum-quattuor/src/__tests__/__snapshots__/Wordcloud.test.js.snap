@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Lightsabers> renders correctly 1`] = `
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+      "justifyContent": "center",
+      "maxHeight": "500px",
+      "minHeight": "6em",
+      "position": "relative",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "display": "inline-block",
+        "position": "absolute",
+        "transform": "rotate(315deg)",
+      }
+    }
+  >
+    <p
+      key="firstWordLeftShaft"
+      style={
+        Object {
+          "backgroundColor": "#555555",
+          "borderRadius": "0 6px 6px 0",
+          "color": "#FFFFFF",
+          "display": "inline",
+          "padding": "0 20px 0 20px",
+        }
+      }
+    >
+      one
+    </p>
+    <p
+      key="three+0"
+      style={
+        Object {
+          "color": "LightSkyBlue",
+          "display": "inline",
+          "fontSize": "20px",
+          "fontWeight": "bold",
+          "margin": "0.2em",
+          "textShadow": "0 0 8px Cyan",
+        }
+      }
+    >
+      three
+    </p>
+  </div>
+  <div
+    style={
+      Object {
+        "display": "inline-block",
+        "position": "absolute",
+        "transform": "rotate(225deg)",
+      }
+    }
+  >
+    <p
+      key="firstWordRightShaft"
+      style={
+        Object {
+          "backgroundColor": "#555555",
+          "borderRadius": "0 6px 6px 0",
+          "color": "#FFFFFF",
+          "display": "inline",
+          "padding": "0 20px 0 20px",
+        }
+      }
+    >
+      two
+    </p>
+    <p
+      key="four+0"
+      style={
+        Object {
+          "color": "red",
+          "display": "inline",
+          "fontSize": "20px",
+          "fontWeight": "bold",
+          "margin": "0.2em",
+          "textShadow": "0 0 8px red",
+        }
+      }
+    >
+      four
+    </p>
+  </div>
+</div>
+`;
+
+exports[`<Wordcloud> renders correctly 1`] = `<Lightsabers />`;

@@ -11,7 +11,7 @@ export const fetchSearchData = fetchUrl => (dispatch) => {
   // Updates loading state and informs reducer which url is being fetched
   dispatch(updateSearchContentLoadingState(true, fetchUrl));
 
-  fetch(fetchUrl)
+  return fetch(fetchUrl)
     .then((response) => {
       if (response.ok) {
         return response.json();
@@ -28,17 +28,15 @@ export const fetchSearchData = fetchUrl => (dispatch) => {
     });
 };
 
-export const fetchSearchHistory = fetchUrl => (dispatch) => {
-  fetch(fetchUrl)
-    .then((response) => {
-      if (response.ok) {
-        return response.json();
-      }
-      return false;
-    })
-    .then((data) => {
-      if (data !== undefined) { // Prevents JSON data to be updated if data does not exist
-        dispatch(updateSearchHistorySet(data));
-      }
-    });
-};
+export const fetchSearchHistory = fetchUrl => dispatch => fetch(fetchUrl)
+  .then((response) => {
+    if (response.ok) {
+      return response.json();
+    }
+    return false;
+  })
+  .then((data) => {
+    if (data !== undefined) { // Prevents JSON data to be updated if data does not exist
+      dispatch(updateSearchHistorySet(data));
+    }
+  });

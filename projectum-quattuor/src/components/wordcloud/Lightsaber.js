@@ -25,7 +25,7 @@ const Lightsabers = (props) => {
 
   // Uses the rest of the words from the lists and adds a glowing lightsaber style.
   const saber = (wordList, color, glow = color) => (
-    [wordList.map((word, i) => <p key={`${word}+${i}`} style={saberStyle(color, glow)}>{word}</p>)]
+    wordList.map((word, i) => <p key={`${word}+${i}`} style={saberStyle(color, glow)}>{word}</p>)
   );
 
   // Combine shaft and saber into a lightsaber.
