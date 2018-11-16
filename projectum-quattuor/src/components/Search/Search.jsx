@@ -1,19 +1,9 @@
 import React, { Component } from 'react';
 import Checkbox from './Checkbox';
 import Searchfield from './Searchfield';
-
-const searchLabels = ['Planets', 'Starships', 'People', 'Species', 'Films', 'Vehicles'];
-export const APIQuery = 'http://it2810-06.idi.ntnu.no/api/api/';
-const sortLabels = [['Name', 'ASC'], ['Name', 'DESC'], ['ID', 'ASC'], ['ID', 'DESC']];
-export const nameTranslate = {
-  Films: 'title',
-  People: 'name',
-  Planets: 'name',
-  Vehicles: 'name',
-  Starships: 'name',
-  Species: 'name',
-};
-
+import {
+  nameTranslate, APIQuery, searchLabels, sortLabels,
+} from '../../consts';
 
 export default class Searchbutton extends Component {
   constructor(props) {
@@ -39,7 +29,6 @@ export default class Searchbutton extends Component {
   }
 
   /* Creates the checkboxes dynamically from the list of labels. */
-
   createOptions() {
     const checkboxArray = [];
     searchLabels.map(item => checkboxArray.push(
@@ -72,11 +61,13 @@ export default class Searchbutton extends Component {
 
 
   makeNewSearch() {
+    // Formats the sortBy-attribute to fit database attributes
     const sortBy = this.state.selectedSort[0] === 'Name' ? nameTranslate[this.state.selectedItem] : this.state.selectedSort[0];
     this.props.searchWithApi(`${APIQuery}${this.state.endpointValue}?search=${this.state.searchValue}&sortBy=${sortBy}&order=${this.state.selectedSort[1]}`); // Request content from search
     this.props.searchForHistoryApi(`${APIQuery}search`); // Request search history
   }
 
+  // Updates and searches for data
   updateSearchValue(searchValue) {
     this.setState({ searchValue }, () => this.makeNewSearch());
   }

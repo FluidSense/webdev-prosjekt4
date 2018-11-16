@@ -3,8 +3,12 @@ import { connect } from 'react-redux';
 import { searchHistorySelector } from '../../state/search/selectors';
 import { fetchSearchHistory } from '../../state/search/actions';
 import Lightsabers from './Lightsaber';
-import { APIQuery } from '../Search/Search';
+import { APIQuery } from '../../consts';
 
+/*
+This container gets the history when it is mounted
+and passes it to the presentation Lightsaber wordcloud
+*/
 export class _WordCloud extends React.Component {
   componentDidMount() {
     this.props.searchForHistoryApi(`${APIQuery}search`);

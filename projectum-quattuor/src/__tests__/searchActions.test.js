@@ -2,7 +2,7 @@ import thunk from 'redux-thunk';
 import configureMockStore from 'redux-mock-store';
 import fetchMock from 'fetch-mock';
 import * as actions from '../state/search/actions';
-import { APIQuery } from '../components/Search/Search';
+import { APIQuery } from '../consts';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
