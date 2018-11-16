@@ -6,6 +6,7 @@ const Checkbox = (props) => {
   } = props;
   const sub1 = `${subKey}1`;
 
+  // Creates radio-button-acting checkboxes
   return (
     <label htmlFor={sub1} className={checked ? 'checked_label' : 'check_label'}>
       {label}

@@ -6,9 +6,9 @@ import Lightsabers from './Lightsaber';
 
 const APIQuery = 'http://it2810-06.idi.ntnu.no/api/api/search';
 
-/* 
-This container gets the history when it is mounted 
-and passes it to the presentation Lightsaber wordcloud 
+/*
+This container gets the history when it is mounted
+and passes it to the presentation Lightsaber wordcloud
 */
 class _WordCloud extends React.Component {
   componentDidMount() {

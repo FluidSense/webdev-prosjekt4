@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import Checkbox from './Checkbox';
 import Searchfield from './Searchfield';
-import { nameTranslate, APIQuery, searchLabels, sortLabels} from '../../consts';
+import {
+  nameTranslate, APIQuery, searchLabels, sortLabels,
+} from '../../consts';
 
 export default class Searchbutton extends Component {
   constructor(props) {
