@@ -54,24 +54,24 @@ export default class ResultSet extends React.Component {
       return <p className="loading_message">Loading...</p>;
     }
 
-    if (!Array.isArray(resultSetJson)) {
+    if (!Array.isArray(resultSetJson.rows)) {
       return <p>Please choose a type option</p>;
     }
 
-    if (resultSetJson === undefined || resultSetJson.length < 1) {
+    if (resultSetJson.rows === undefined || resultSetJson.rows.length < 1) {
       return <p>No results retrieved.</p>;
     }
 
-    const displayResults = resultSetJson.slice(0, maxLoadObjects * loadedIndex);
+    const displayResults = resultSetJson.rows.slice(0, maxLoadObjects * loadedIndex);
 
     return (
 
       <div className="result_set" onScroll={e => this.handleScroll(e)}>
         <h3>Click the results to see more information</h3>
         <ul className="result_list">
-          {displayResults.map((object, i) => (
+          {Object.keys(displayResults).map((object, i) => (
             <li key={i}>
-              <ResultObject information={object} />
+              <ResultObject information={displayResults[object]} />
             </li>
           ))}
         </ul>
