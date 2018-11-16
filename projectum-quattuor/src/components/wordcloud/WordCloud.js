@@ -7,7 +7,7 @@ import { APIQuery } from '../Search/Search';
 
 export class _WordCloud extends React.Component {
   componentDidMount() {
-    this.props.searchForHistoryApi(`${APIQuery}/search`);
+    this.props.searchForHistoryApi(`${APIQuery}search`);
   }
 
   render() {

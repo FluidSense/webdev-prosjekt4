@@ -28,17 +28,15 @@ export const fetchSearchData = fetchUrl => (dispatch) => {
     });
 };
 
-export const fetchSearchHistory = fetchUrl => (dispatch) => {
-  return fetch(fetchUrl)
-    .then((response) => {
-      if (response.ok) {
-        return response.json();
-      }
-      return false;
-    })
-    .then((data) => {
-      if (data !== undefined) { // Prevents JSON data to be updated if data does not exist
-        dispatch(updateSearchHistorySet(data));
-      }
-    });
-};
+export const fetchSearchHistory = fetchUrl => dispatch => fetch(fetchUrl)
+  .then((response) => {
+    if (response.ok) {
+      return response.json();
+    }
+    return false;
+  })
+  .then((data) => {
+    if (data !== undefined) { // Prevents JSON data to be updated if data does not exist
+      dispatch(updateSearchHistorySet(data));
+    }
+  });

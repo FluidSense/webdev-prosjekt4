@@ -1,59 +1,97 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Wordcloud> renders correctly 1`] = `
-ShallowWrapper {
-  Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <_WordCloud
-    searchForHistoryApi={[Function]}
-  />,
-  Symbol(enzyme.__renderer__): Object {
-    "batchedUpdates": [Function],
-    "getNode": [Function],
-    "render": [Function],
-    "simulateError": [Function],
-    "simulateEvent": [Function],
-    "unmount": [Function],
-  },
-  Symbol(enzyme.__node__): Object {
-    "instance": null,
-    "key": undefined,
-    "nodeType": "function",
-    "props": Object {
-      "words": undefined,
-    },
-    "ref": null,
-    "rendered": null,
-    "type": [Function],
-  },
-  Symbol(enzyme.__nodes__): Array [
+exports[`<Lightsabers> renders correctly 1`] = `
+<div
+  style={
     Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "function",
-      "props": Object {
-        "words": undefined,
-      },
-      "ref": null,
-      "rendered": null,
-      "type": [Function],
-    },
-  ],
-  Symbol(enzyme.__options__): Object {
-    "adapter": ReactSixteenAdapter {
-      "options": Object {
-        "enableComponentDidUpdateOnSetState": true,
-        "lifecycles": Object {
-          "componentDidUpdate": Object {
-            "onSetState": true,
-          },
-          "getDerivedStateFromProps": true,
-          "getSnapshotBeforeUpdate": true,
-          "setState": Object {
-            "skipsComponentDidUpdateOnNullish": true,
-          },
-        },
-      },
-    },
-  },
-}
+      "alignItems": "center",
+      "display": "flex",
+      "justifyContent": "center",
+      "maxHeight": "500px",
+      "minHeight": "6em",
+      "position": "relative",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "display": "inline-block",
+        "position": "absolute",
+        "transform": "rotate(315deg)",
+      }
+    }
+  >
+    <p
+      key="firstWordLeftShaft"
+      style={
+        Object {
+          "backgroundColor": "#555555",
+          "borderRadius": "0 6px 6px 0",
+          "color": "#FFFFFF",
+          "display": "inline",
+          "padding": "0 20px 0 20px",
+        }
+      }
+    >
+      one
+    </p>
+    <p
+      key="three+0"
+      style={
+        Object {
+          "color": "LightSkyBlue",
+          "display": "inline",
+          "fontSize": "20px",
+          "fontWeight": "bold",
+          "margin": "0.2em",
+          "textShadow": "0 0 8px Cyan",
+        }
+      }
+    >
+      three
+    </p>
+  </div>
+  <div
+    style={
+      Object {
+        "display": "inline-block",
+        "position": "absolute",
+        "transform": "rotate(225deg)",
+      }
+    }
+  >
+    <p
+      key="firstWordRightShaft"
+      style={
+        Object {
+          "backgroundColor": "#555555",
+          "borderRadius": "0 6px 6px 0",
+          "color": "#FFFFFF",
+          "display": "inline",
+          "padding": "0 20px 0 20px",
+        }
+      }
+    >
+      two
+    </p>
+    <p
+      key="four+0"
+      style={
+        Object {
+          "color": "red",
+          "display": "inline",
+          "fontSize": "20px",
+          "fontWeight": "bold",
+          "margin": "0.2em",
+          "textShadow": "0 0 8px red",
+        }
+      }
+    >
+      four
+    </p>
+  </div>
+</div>
 `;
+
+exports[`<Wordcloud> renders correctly 1`] = `<Lightsabers />`;
