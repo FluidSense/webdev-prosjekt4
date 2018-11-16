@@ -17,7 +17,7 @@ export default class ResultObject extends React.Component {
   // Parses an incoming object recursively, so objects containing objects are displayed properly
   parseObject(object) {
     return Object.keys(object)/* Filters out unneccessary tags */
-      .filter(attribute => attribute !== 'id' && attribute !== 'transportId' && attribute !== 'homeworldId' && attribute !== 'episode_id')
+      .filter(attribute => attribute !== 'id' && attribute !== 'transportId' && attribute !== 'homeworldId' && attribute !== 'episode_id' && attribute !== 'fixture')
       .map((attribute) => {
         if (typeof object[attribute] !== 'string' && typeof object[attribute] !== 'number' && object[attribute] !== null) {
           return (
