@@ -8,6 +8,7 @@ class Searchfield extends React.Component {
     };
   }
 
+  // Updates local value to be sent on either button or enter-key.
   handleChange(event) {
     this.setState({ searchValue: event.target.value });
   }

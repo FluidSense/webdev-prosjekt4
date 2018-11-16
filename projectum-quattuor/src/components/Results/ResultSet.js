@@ -3,20 +3,14 @@ import React from 'react';
 import ResultObject from './ResultObject';
 
 export default class ResultSet extends React.Component {
-  /* Constructor closed */
   constructor(props) {
     super(props);
     this.state = {
       loadedIndex: 1,
-      /*
-      This should be moved from state if dynamic changing of maximum objects is not desired.
-      Could also be specified as a prop or state in Redux.
-      */
       maxLoadObjects: 6,
       fullyLoaded: false,
     };
   }
-  /* Constructor closed */
 
   /*
   Checks whether the user has scrolled to the bottom of the page
