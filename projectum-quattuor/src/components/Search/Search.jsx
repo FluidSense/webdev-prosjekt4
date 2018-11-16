@@ -4,7 +4,7 @@ import Searchfield from './Searchfield';
 
 const searchLabels = ['Planets', 'Starships', 'People', 'Species', 'Films', 'Vehicles'];
 const APIQuery = 'http://it2810-06.idi.ntnu.no/api/api/';
-const sortLabels = [['Alphabetical', 'ASC'], ['Alphabetical', 'DESC'], ['ID', 'ASC'], ['ID', 'DESC']];
+const sortLabels = [['Name', 'ASC'], ['Name', 'DESC'], ['ID', 'ASC'], ['ID', 'DESC']];
 
 
 export default class Searchbutton extends Component {
@@ -64,7 +64,8 @@ export default class Searchbutton extends Component {
 
 
   makeNewSearch() {
-    this.props.searchWithApi(`${APIQuery}${this.state.endpointValue}?search=${this.state.searchValue}&sortBy=${this.state.selectedSort[0]}&order=${this.state.selectedSort[1]}`); // Request content from search
+    const search = this.state.searchValue ? `search=${this.state.searchValue}` : '';
+    this.props.searchWithApi(`${APIQuery}${this.state.endpointValue}?${search}&sortBy=${this.state.selectedSort[0]}&order=${this.state.selectedSort[1]}`); // Request content from search
     this.props.searchForHistoryApi(`${APIQuery}search`); // Request search history
   }
 

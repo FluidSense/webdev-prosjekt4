@@ -24,6 +24,6 @@ class Searchfield extends React.Component {
       </div>
     );
   }
-};
+}
 
 export default Searchfield;
