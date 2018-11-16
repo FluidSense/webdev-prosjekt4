@@ -29,7 +29,8 @@ const Lightsabers = (props) => {
   const saberRight = [rightShaft, ...saber(wordsRight, 'red')];
   const lengthOfSaber = wordsLeft.join('').length + wordsLeft.length;
 
-  return (saberLeft.length > 1 && saberRight.length > 1 &&
+  return (saberLeft.length > 1 && saberRight.length > 1
+    && (
     <div style={{
       minHeight: `${lengthOfSaber}em`, maxHeight: '500px', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative',
     }}
@@ -37,6 +38,7 @@ const Lightsabers = (props) => {
       <div style={{ transform: 'rotate(315deg)', display: 'inline-block', position: 'absolute' }}>{saberLeft}</div>
       <div style={{ transform: 'rotate(225deg)', display: 'inline-block', position: 'absolute' }}>{saberRight}</div>
     </div>
+    )
   );
 };
 

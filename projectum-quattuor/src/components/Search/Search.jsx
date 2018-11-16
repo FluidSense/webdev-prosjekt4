@@ -71,7 +71,7 @@ export default class Searchbutton extends Component {
 
 
   makeNewSearch() {
-    const sortBy = this.state.selectedSort[0] === 'Name' ? nameTranslate[this.state.selectedItem] : this.state.selectedSort[0] ;
+    const sortBy = this.state.selectedSort[0] === 'Name' ? nameTranslate[this.state.selectedItem] : this.state.selectedSort[0];
     this.props.searchWithApi(`${APIQuery}${this.state.endpointValue}?search=${this.state.searchValue}&sortBy=${sortBy}&order=${this.state.selectedSort[1]}`); // Request content from search
     this.props.searchForHistoryApi(`${APIQuery}search`); // Request search history
   }

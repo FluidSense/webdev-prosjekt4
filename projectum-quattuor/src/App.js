@@ -10,10 +10,10 @@ const App = () => (
 
     <div className="content">
 
-      <WordCloud />
-
       {/* Search bar */}
       <SearchContainer />
+
+      <WordCloud />
 
       {/* Result set */}
       <div className="result_wrapper">
