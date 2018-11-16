@@ -53,10 +53,14 @@ Under dette prosjektet, såvel som i de tidligere prosjektene, har vi passet på
 
 Dessuten er utformingen så enkel som mulig, slik at det skal være tydelig for en bruker å skille komponentene fra hverandre. Søkefeltet er lett å bruke og informasjonen rundt funksjonaliteten er så tydelig som mulig. Av brukerhensyn valgte vi å ikke overkomplisere designet på komponentene, til tross for at ordskyen er en kul liten feature.
 
-![Image 1](https://imgur.com/AovFvrJ "Image 1")
-![Image 2](https://imgur.com/ugIYSO2 "Image 2")
-![Image 3](https://imgur.com/8M5IUUK "Image 3")
-![Image 4](https://imgur.com/QDtClPi "Image 4")
+![Image 1](https://imgur.com/ugIYSO2.jpg "Image 1")
+_Opprinnelig skjerm uten søk_
+![Image 2](https://imgur.com/AovFvrJ.jpg "Image 2")
+_Søk på "Skywalker" med et "people"-filter, sammen med ordskyen_
+![Image 3](https://imgur.com/8M5IUUK.jpg "Image 3")
+_Resultatet av søket over_
+![Image 4](https://imgur.com/QDtClPi.jpg "Image 4")
+_Et utvidet objekt fra søkeresultat_
 
 ### Utvikling
 Vi har gått fra Github til Gitlab i dette prosjektet, som har gitt oss et par endringer i vår utviklingsflyt. I det store og det hele fungerer de systemene ganske likt. Issueboardet, som flytter issues mellom ulike statuskategorier, ble satt opp for oss automatisk, så dette slapp vi eksplisitt lage selv. Boardet ga oss innsikt i hvordan strukturere tiden vår og se vår progresjon over tid. Det viktigste for oss var å ha god Gitstruktur med commits som markerte hvilke issues den hørte til. Alle commits, utenom enkelte merges, ble markert slik at andre utviklere enkelt kunne forstå hva prinsippet ved det var. Dette ble koblet opp mot issueboardet, slik at funksjonalitet som var markert som ferdig ble oppdatert automatisk.
